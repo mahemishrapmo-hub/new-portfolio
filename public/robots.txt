@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.mahemishra.co.uk/sitemap-index.xml

@@ -1,0 +1,61 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const fmt = post.data.pubDate.toLocaleDateString('en-GB', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<Base title={post.data.title} description={post.data.description}>
+  <article class="section first">
+    <div class="wrap">
+      <p class="mono meta">
+        {fmt}
+        {post.data.tags.length > 0 && ` · ${post.data.tags.join(' · ')}`}
+      </p>
+      <h1 class="post-title">{post.data.title}</h1>
+      <div class="prose">
+        <Content />
+      </div>
+      <p class="back">
+        <a href="/writing/">Back to writing</a>
+      </p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .first {
+    border-top: 0;
+  }
+
+  .meta {
+    margin-bottom: 1rem;
+  }
+
+  .post-title {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    max-width: 46rem;
+    margin-bottom: 2rem;
+  }
+
+  .back {
+    margin-top: 3rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+  }
+</style>

@@ -1,0 +1,49 @@
+---
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+  expanded?: boolean;
+}
+
+const { project, expanded = false } = Astro.props;
+
+const statusLabel: Record<Project['status'], string> = {
+  live: 'Live',
+  shipped: 'Shipped',
+  'in-progress': 'In progress',
+};
+---
+
+<article class="card" data-tags={project.tags.join('|')}>
+  <div class="top">
+    <span class="ref">{project.ref}</span>
+    <span class="state">
+      <span
+        class:list={['dot', project.status === 'in-progress' ? 'amber' : 'green']}
+        aria-hidden="true"></span>
+      <span class="mono">{statusLabel[project.status]}</span>
+    </span>
+  </div>
+  <h3>{project.title}</h3>
+  <p>{project.summary}</p>
+  {expanded && <p>{project.detail}</p>}
+  {
+    project.link && (
+      <p>
+        <a href={project.link.href}>{project.link.label}</a>
+      </p>
+    )
+  }
+  <div class="tags">
+    {project.tags.map((t) => <span class="tag">{t}</span>)}
+  </div>
+</article>
+
+<style>
+  .state {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+</style>

@@ -1,0 +1,28 @@
+---
+import Base from '../layouts/Base.astro';
+---
+
+<Base title="Not found">
+  <section class="section first">
+    <div class="wrap">
+      <p class="mono">Ref not found</p>
+      <h1>404</h1>
+      <p class="msg">
+        This entry does not exist in the register.
+        <a href="/">Return to the index.</a>
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .first {
+    border-top: 0;
+    padding-top: 6rem;
+  }
+
+  .msg {
+    margin-top: 1.5rem;
+    color: var(--muted);
+  }
+</style>

@@ -1,0 +1,131 @@
+---
+import Base from '../layouts/Base.astro';
+import StatusRow from '../components/StatusRow.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { profile } from '../data/profile';
+import { projects } from '../data/projects';
+import { stack } from '../data/experience';
+---
+
+<Base>
+  <section class="hero">
+    <div class="wrap">
+      <p class="mono reveal d1">Register / {profile.name} / {profile.location}</p>
+      <h1 class="reveal d2">
+        Programme delivery,<br />backed by data.
+      </h1>
+      <p class="lede reveal d2">
+        I am {profile.name}, {profile.role} on the {profile.programme}, a £1B+ NEC
+        scheme at {profile.org}. I keep governance moving and build the reporting
+        that tells a board the truth.
+      </p>
+      <StatusRow />
+      <div class="cta reveal d3">
+        <a class="btn solid" href={profile.cvUrl}>View CV</a>
+        <a class="btn" href="/projects/">See the work</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="ref">01</span>
+        <h2>Selected work</h2>
+      </div>
+      <div class="grid">
+        {projects.map((p) => <ProjectCard project={p} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="ref">02</span>
+        <h2>Working stack</h2>
+      </div>
+      <div class="stack-grid">
+        {
+          stack.map((s) => (
+            <div class="stack-col">
+              <p class="mono">{s.group}</p>
+              <ul>
+                {s.items.map((i) => (
+                  <li>{i}</li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap contact">
+      <div class="section-head">
+        <span class="ref">03</span>
+        <h2>Get in touch</h2>
+      </div>
+      <p class="prose">
+        Open to conversations about programme delivery, PMO and data roles. The
+        fastest route is email.
+      </p>
+      <a class="btn solid" href={`mailto:${profile.email}`}>{profile.email}</a>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero {
+    padding: clamp(3.5rem, 10vw, 7rem) 0 clamp(2.5rem, 6vw, 4rem);
+  }
+
+  .hero .mono {
+    margin-bottom: 1.25rem;
+  }
+
+  .lede {
+    max-width: 38rem;
+    font-size: 1.15rem;
+    margin: 1.5rem 0 2rem;
+    color: var(--muted);
+  }
+
+  .cta {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-top: 1.75rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+  }
+
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .stack-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0.75rem 0 0;
+  }
+
+  .stack-col li {
+    padding: 0.45rem 0;
+    border-top: 1px solid var(--line);
+    font-size: 0.95rem;
+  }
+
+  .contact .btn {
+    text-transform: none;
+    letter-spacing: 0.02em;
+  }
+</style>
