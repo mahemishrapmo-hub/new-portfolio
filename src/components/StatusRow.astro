@@ -1,0 +1,85 @@
+---
+import { profile } from '../data/profile';
+---
+
+<div
+  class="status reveal d3"
+  data-role-start={profile.currentRoleStart}
+  data-career-start={profile.nhsCareerStart}
+>
+  <span class="entry">
+    <span class="dot green pulse" aria-hidden="true"></span>
+    <span class="mono label">Status</span>
+    <span class="value">In post, {profile.org}</span>
+  </span>
+  <span class="entry">
+    <span class="mono label">Current role</span>
+    <span class="value" id="role-duration">&nbsp;</span>
+  </span>
+  <span class="entry">
+    <span class="mono label">NHS delivery</span>
+    <span class="value" id="career-duration">&nbsp;</span>
+  </span>
+  <span class="entry">
+    <span class="mono label">Programme</span>
+    <span class="value">£1B+ NEC</span>
+  </span>
+</div>
+
+<style>
+  .status {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 2rem;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--status-green);
+    background: var(--paper-raised);
+    padding: 0.9rem 1.2rem;
+  }
+
+  .entry {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+  }
+
+  .label {
+    color: var(--muted);
+  }
+
+  .value {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    color: var(--ink);
+  }
+</style>
+
+<script>
+  // Live counters, computed in the visitor's browser from
+  // the dates in src/data/profile.ts. No hand-updating, ever.
+  const el = document.querySelector<HTMLElement>('.status');
+
+  function monthsSince(iso: string): string {
+    const start = new Date(iso);
+    const now = new Date();
+    let months =
+      (now.getFullYear() - start.getFullYear()) * 12 +
+      (now.getMonth() - start.getMonth());
+    if (now.getDate() < start.getDate()) months -= 1;
+    if (months < 1) return 'Under a month';
+    if (months < 12) return `${months} month${months === 1 ? '' : 's'}`;
+    const y = Math.floor(months / 12);
+    const m = months % 12;
+    return m === 0
+      ? `${y} year${y === 1 ? '' : 's'}`
+      : `${y}y ${m}m`;
+  }
+
+  if (el) {
+    const role = document.getElementById('role-duration');
+    const career = document.getElementById('career-duration');
+    if (role && el.dataset.roleStart) role.textContent = monthsSince(el.dataset.roleStart);
+    if (career && el.dataset.careerStart)
+      career.textContent = monthsSince(el.dataset.careerStart);
+  }
+</script>

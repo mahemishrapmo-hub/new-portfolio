@@ -1,0 +1,54 @@
+---
+import Base from '../layouts/Base.astro';
+import { profile } from '../data/profile';
+---
+
+<Base title="About" description="About Mahe Mishra.">
+  <section class="section first">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="ref">ABT</span>
+        <h2>About</h2>
+      </div>
+      <div class="prose">
+        <p>
+          I am {profile.name}, a programme delivery professional working in NHS
+          capital projects. Right now that means the {profile.programme}, a £1B+
+          redevelopment delivered under an NEC contract, where I sit inside the
+          programme team handling governance, reporting and the connective work
+          between Finance, Communications, Design and Construction, and
+          Mobilisation.
+        </p>
+        <p>
+          My background is a First Class degree in Business Management and
+          Economics from the University of Sheffield, and my working style is
+          shaped by data. I build in Python, SQL and Power BI, and my default
+          instinct on any process is to ask whether a machine should be doing
+          the boring half of it. In my previous role that instinct removed a
+          quarter to a third of the time spent on routine reporting.
+        </p>
+        <p>
+          I am currently working towards the APM Project Management
+          Qualification. Longer term I am interested in major infrastructure
+          delivery, the kind of programmes measured in years and billions,
+          where good governance and honest reporting are the difference between
+          delivery and drift.
+        </p>
+        <p>
+          Away from work, I cook, mostly Indian and Indo-Chinese, and I train
+          in the gym.
+        </p>
+        <p>
+          The fastest way to reach me is
+          <a href={`mailto:${profile.email}`}>{profile.email}</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .first {
+    border-top: 0;
+  }
+</style>

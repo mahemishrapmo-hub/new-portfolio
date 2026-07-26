@@ -1,0 +1,6 @@
+# Shortlinks. Update targets, then these work forever.
+/github https://github.com/mahemishrapmo-hub 301
+# TODO uncomment and set your real LinkedIn slug
+# /linkedin https://www.linkedin.com/in/YOUR-SLUG 301
+# TODO uncomment once you drop cv.pdf into public/
+# /cv /cv.pdf 302

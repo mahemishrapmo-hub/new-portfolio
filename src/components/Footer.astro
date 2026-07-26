@@ -1,0 +1,65 @@
+---
+import { profile } from '../data/profile';
+
+// Evaluated at build time, so every deploy refreshes the stamp.
+const built = new Date();
+const stamp = built.toLocaleDateString('en-GB', {
+  year: 'numeric',
+  month: 'short',
+  day: '2-digit',
+});
+---
+
+<footer class="site-foot">
+  <div class="wrap grid">
+    <div>
+      <p class="mono">Contact</p>
+      <a href={`mailto:${profile.email}`}>{profile.email}</a>
+    </div>
+    <div>
+      <p class="mono">Elsewhere</p>
+      <a href={profile.github}>GitHub</a>
+      <a href={profile.linkedin}>LinkedIn</a>
+    </div>
+    <div class="stamp">
+      <p class="mono">Document control</p>
+      <p class="mono light">Issued {stamp} · Built with Astro · Served by Cloudflare</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-foot {
+    border-top: 1px solid var(--line);
+    padding: 2.5rem 0 3rem;
+    margin-top: 4rem;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .grid p.mono {
+    margin-bottom: 0.5rem;
+  }
+
+  .grid a {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+    text-decoration: none;
+    margin-bottom: 0.3rem;
+  }
+
+  .grid a:hover {
+    text-decoration: underline;
+  }
+
+  .light {
+    color: var(--muted);
+    text-transform: none;
+    letter-spacing: 0.03em;
+  }
+</style>

@@ -1,0 +1,145 @@
+---
+import { profile } from '../data/profile';
+
+const nav = [
+  { href: '/', label: 'Index' },
+  { href: '/projects/', label: 'Projects' },
+  { href: '/experience/', label: 'Experience' },
+  { href: '/writing/', label: 'Writing' },
+  { href: '/about/', label: 'About' },
+];
+
+const path = Astro.url.pathname;
+const isActive = (href: string) =>
+  href === '/' ? path === '/' : path.startsWith(href);
+---
+
+<header class="site-head">
+  <div class="wrap bar">
+    <a class="brand" href="/">
+      <span class="mark" aria-hidden="true">MM</span>
+      <span class="mono doc">Portfolio / Rev 2026</span>
+    </a>
+    <nav aria-label="Primary">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            class:list={['nav-link', { active: isActive(item.href) }]}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+    <button id="theme-toggle" type="button" aria-label="Switch colour theme">
+      <span class="mono">Theme</span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .site-head {
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    background: color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter: blur(8px);
+    z-index: 10;
+  }
+
+  .bar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    text-decoration: none;
+    margin-right: auto;
+  }
+
+  .mark {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-stretch: 118%;
+    font-size: 1rem;
+    color: var(--paper);
+    background: var(--ink);
+    padding: 0.2rem 0.45rem;
+    line-height: 1;
+  }
+
+  .doc {
+    color: var(--muted);
+  }
+
+  nav {
+    display: flex;
+    gap: 1.1rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--muted);
+    padding: 0.25rem 0;
+    border-bottom: 1px solid transparent;
+  }
+
+  .nav-link:hover {
+    color: var(--ink);
+  }
+
+  .nav-link.active {
+    color: var(--accent-ink);
+    border-bottom-color: var(--accent-ink);
+  }
+
+  #theme-toggle {
+    border: 1px solid var(--line);
+    background: none;
+    color: var(--muted);
+    padding: 0.3rem 0.6rem;
+    cursor: pointer;
+  }
+
+  #theme-toggle:hover {
+    border-color: var(--line-strong);
+    color: var(--ink);
+  }
+
+  @media (max-width: 640px) {
+    .doc {
+      display: none;
+    }
+
+    .bar {
+      gap: 0.9rem;
+    }
+
+    nav {
+      gap: 0.8rem;
+    }
+  }
+</style>
+
+<script>
+  const btn = document.getElementById('theme-toggle');
+  btn?.addEventListener('click', () => {
+    const root = document.documentElement;
+    const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    localStorage.setItem('theme', next);
+  });
+</script>

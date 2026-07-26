@@ -1,0 +1,100 @@
+---
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { projects, allTags } from '../data/projects';
+---
+
+<Base title="Projects" description="Selected delivery and data work by Mahe Mishra.">
+  <section class="section first">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="ref">PRJ</span>
+        <h2>Projects</h2>
+      </div>
+      <p class="intro">
+        Work I can show. Anything built inside a live programme is represented
+        here through synthetic data or methodology only.
+      </p>
+
+      <div class="filters" role="group" aria-label="Filter projects by tag">
+        <button class="filter active" data-tag="all" type="button">All</button>
+        {
+          allTags.map((t) => (
+            <button class="filter" data-tag={t} type="button">
+              {t}
+            </button>
+          ))
+        }
+      </div>
+
+      <div class="grid" id="project-grid">
+        {projects.map((p) => <ProjectCard project={p} expanded />)}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .first {
+    border-top: 0;
+  }
+
+  .intro {
+    max-width: 38rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+  }
+
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .filter {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    padding: 0.4rem 0.85rem;
+    cursor: pointer;
+  }
+
+  .filter:hover {
+    border-color: var(--line-strong);
+    color: var(--ink);
+  }
+
+  .filter.active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+</style>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>('.filter');
+  const cards = document.querySelectorAll<HTMLElement>('#project-grid .card');
+
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      buttons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      const tag = btn.dataset.tag;
+      cards.forEach((card) => {
+        const tags = (card.dataset.tags ?? '').split('|');
+        card.style.display = tag === 'all' || tags.includes(tag ?? '') ? '' : 'none';
+      });
+    });
+  });
+</script>

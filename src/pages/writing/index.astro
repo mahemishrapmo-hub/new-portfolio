@@ -1,0 +1,90 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: '2-digit' });
+---
+
+<Base title="Writing" description="Notes on programme delivery, PMO practice and data.">
+  <section class="section first">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="ref">WRT</span>
+        <h2>Writing</h2>
+      </div>
+
+      {
+        posts.length === 0 ? (
+          <p class="empty">
+            First post is in final review. It covers building a RAID log
+            dashboard in Power BI for a £1B NHS programme. Check back shortly.
+          </p>
+        ) : (
+          <div class="list">
+            {posts.map((post) => (
+              <a class="post" href={`/writing/${post.id}/`}>
+                <span class="mono date">{fmt(post.data.pubDate)}</span>
+                <span class="titleblock">
+                  <h3>{post.data.title}</h3>
+                  <p>{post.data.description}</p>
+                </span>
+              </a>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </section>
+</Base>
+
+<style>
+  .first {
+    border-top: 0;
+  }
+
+  .empty {
+    color: var(--muted);
+    max-width: 38rem;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .post {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .post:hover h3 {
+    color: var(--accent-ink);
+  }
+
+  .post p {
+    margin: 0.4rem 0 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .date {
+    padding-top: 0.3rem;
+  }
+
+  @media (max-width: 640px) {
+    .post {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
+  }
+</style>
