@@ -16,7 +16,7 @@ export const profile = {
   programmeShort: 'HHRP',
 
   // TODO confirm you want your city public. Region is a safe default.
-  location: 'Yorkshire, UK',
+  location: 'South Yorkshire, UK',
 
   // TODO confirm Cloudflare Email Routing forwards this address, then keep it.
   email: 'mahe@mahemishra.co.uk',
@@ -24,7 +24,7 @@ export const profile = {
   github: 'https://github.com/mahemishrapmo-hub',
 
   // TODO set your real LinkedIn URL
-  linkedin: 'https://www.linkedin.com/in/YOUR-SLUG',
+  linkedin: 'https://www.linkedin.com/in/mahe-mishra-31693b267/',
 
   // Points at public/_redirects. Drop cv.pdf into public/ and
   // uncomment the /cv line there, then this link works.
@@ -32,8 +32,8 @@ export const profile = {
 
   // ---- Dates that power the live counters on the site ----
   // TODO replace with your real start dates (YYYY-MM-DD).
-  currentRoleStart: '2025-10-01',
-  nhsCareerStart: '2024-06-01',
+  currentRoleStart: '2025-01-01',
+  nhsCareerStart: '2024-01-01',
 };
 
 export type Profile = typeof profile;
