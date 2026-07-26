@@ -2,7 +2,7 @@ export type Role = {
   ref: string;
   title: string;
   org: string;
-  // TODO replace period strings with your real dates
+ 
   period: string;
   current: boolean;
   points: string[];
@@ -27,7 +27,7 @@ export const roles: Role[] = [
     ref: 'EXP-02',
     title: 'Workforce Information Officer',
     org: 'North West Anglia NHS Foundation Trust',
-    period: '2024 to 2025', // TODO real dates
+    period: '2024 to 2025',
     current: false,
     points: [
       'Workforce data management in HealthRoster for clinical and non-clinical staff groups.',
