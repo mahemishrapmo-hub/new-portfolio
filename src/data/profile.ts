@@ -28,7 +28,7 @@ export const profile = {
 
   // Points at public/_redirects. Drop cv.pdf into public/ and
   // uncomment the /cv line there, then this link works.
-  cvUrl: '/cv',
+  cvUrl: 'https://github.com/mahemishrapmo-hub/new-portfolio/blob/bbe352ab8580cdfd62c417be4d7e5ae165a31ce8/public/Mahe%20Mishra%20-%20Resume.pdf',
 
   // ---- Dates that power the live counters on the site ----
   // TODO replace with your real start dates (YYYY-MM-DD).
