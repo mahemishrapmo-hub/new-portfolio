@@ -11,12 +11,12 @@ export type Role = {
 export const roles: Role[] = [
   {
     ref: 'EXP-01',
-    title: 'Programme Support Officer, Band 5',
+    title: 'Programme Support Officer',
     org: 'North West Anglia NHS Foundation Trust',
-    period: '2025 to present', // TODO real dates, e.g. "Oct 2025 to present"
+    period: '2025 to present', 
     current: true,
     points: [
-      'Supporting the £1B+ Hinchingbrooke Hospital Redevelopment Programme, an NEC contract delivered with Graham Construction.',
+      'Supporting the £1B+ Hinchingbrooke Hospital Redevelopment Programme, an NEC contract delivered with Kier Construction.',
       'Programme Board coordination and minute taking for senior governance meetings.',
       'Invoice management through NHS Shared Business Services across programme workstreams.',
       'Risk and RAID tracking, including building the Power BI reporting prototype now with the PMO.',
@@ -25,7 +25,7 @@ export const roles: Role[] = [
   },
   {
     ref: 'EXP-02',
-    title: 'Administration Officer, Band 4',
+    title: 'Workforce Information Officer',
     org: 'North West Anglia NHS Foundation Trust',
     period: '2024 to 2025', // TODO real dates
     current: false,
@@ -47,7 +47,7 @@ export type Credential = {
 export const credentials: Credential[] = [
   {
     ref: 'EDU-01',
-    title: 'BA (Hons) Business Management and Economics, First Class',
+    title: 'BA (Dual Hons) Business Management and Economics, 2:1',
     org: 'University of Sheffield',
     detail: 'Graduated 2026.',
   },
