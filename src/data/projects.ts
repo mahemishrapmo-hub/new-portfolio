@@ -38,7 +38,7 @@ export const projects: Project[] = [
     detail:
       'No template. Register-style layout borrowed from programme documentation, live counters computed in the browser, content managed as markdown. The source is public.',
     tags: ['Astro', 'Cloudflare', 'Web'],
-    link: { label: 'View source', href: 'https://github.com/mahemishrapmo-hub/portfolio' },
+    link: { label: 'View source', href: 'https://github.com/mahemishrapmo-hub/new-portfolio' },
   },
 ];
 
