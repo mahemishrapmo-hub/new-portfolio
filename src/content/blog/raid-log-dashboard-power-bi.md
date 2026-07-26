@@ -3,8 +3,7 @@ title: 'Building a RAID log dashboard in Power BI for a £1B NHS programme'
 description: 'Why static RAID spreadsheets fail on large programmes, and how I prototyped an interactive alternative on synthetic data.'
 pubDate: 2026-07-26
 tags: ['Power BI', 'PMO', 'DAX']
-# Set draft to false once you have read and approved this post.
-draft: true
+draft: false
 ---
 
 Every large programme has a RAID log. Most of them live in a spreadsheet, and most of those spreadsheets fail at the one thing a RAID log exists to do, which is tell decision makers what needs their attention right now.
@@ -50,8 +49,3 @@ Keeping all logic in measures rather than calculated columns kept the model smal
 
 The prototype was received well internally and referred up the PMO chain. The wider lesson is transferable, and it is not about Power BI. Reporting earns trust when the person reading it can get from a headline number to the underlying item in two clicks, and no static document can offer that.
 
-<!-- TODO before publishing
-  1. Read the whole post and adjust anything that does not sound like you.
-  2. Add 2 or 3 screenshots of the dashboard (synthetic data only) into public/images/ and reference them here.
-  3. Flip draft to false in the frontmatter above.
--->
