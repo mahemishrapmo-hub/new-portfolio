@@ -19,7 +19,7 @@ export const profile = {
  
   linkedin: 'https://www.linkedin.com/in/mahe-mishra-31693b267/',
 
-  cvUrl: 'https://github.com/mahemishrapmo-hub/new-portfolio/blob/bbe352ab8580cdfd62c417be4d7e5ae165a31ce8/public/Mahe%20Mishra%20-%20Resume.pdf',
+  cvUrl: 'https://drive.google.com/file/d/1Jfl-ZWSayPCGey5QZ85O_KKpLR2gfXHK/view?usp=drive_link',
 
   
   currentRoleStart: '2025-01-01',
