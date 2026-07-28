@@ -19,7 +19,7 @@ export const profile = {
  
   linkedin: 'https://www.linkedin.com/in/mahe-mishra-31693b267/',
 
-  cvUrl: 'https://drive.google.com/file/d/1Jfl-ZWSayPCGey5QZ85O_KKpLR2gfXHK/view?usp=drive_link',
+  cvUrl: 'https://drive.google.com/file/d/1yjAN7pUgOdpYsJAvfQYXKqVdCPBZwRn5/view?usp=drive_link',
 
   
   currentRoleStart: '2025-01-01',
