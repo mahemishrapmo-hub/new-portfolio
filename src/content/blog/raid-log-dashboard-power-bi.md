@@ -47,5 +47,5 @@ Keeping all logic in measures rather than calculated columns kept the model smal
 
 ## What happened next
 
-The prototype was received well internally and referred up the PMO chain. The wider lesson is transferable, and it is not about Power BI. Reporting earns trust when the person reading it can get from a headline number to the underlying item in two clicks, and no static document can offer that.
+The prototype was received well internally and referred up the PMO chain and since then has been adopted to replace the static RAID Excel File. The wider lesson is transferable, and it is not about Power BI. Reporting earns trust when the person reading it can get from a headline number to the underlying item in two clicks, and no static document can offer that.
 
