@@ -19,7 +19,7 @@ export const roles: Role[] = [
       'Supporting the £1B+ Hinchingbrooke Hospital Redevelopment Programme, an NEC contract delivered with Kier Construction.',
       'Programme Board coordination and minute taking for senior governance meetings.',
       'Invoice management through NHS Shared Business Services across programme workstreams.',
-      'Risk and RAID tracking, including building the Power BI reporting prototype now with the PMO.',
+      'Risk and RAID tracking, including building the Power BI reporting now with the PMO.',
       'Cross-functional liaison across Finance, Communications, Design and Construction, and Mobilisation teams.',
     ],
   },
