@@ -1,0 +1,128 @@
+---
+// One whole split into parts. Status colours only, because every part here is a real status.
+// Count printed inside a part only when it is wide enough, the legend names every part,
+// and the table view underneath carries every value.
+interface Part {
+  label: string;
+  value: number;
+  tone: 'red' | 'amber' | 'green' | 'neutral';
+}
+
+interface Props {
+  title: string;
+  parts: Part[];
+}
+
+const { title, parts } = Astro.props;
+const total = parts.reduce((s, p) => s + p.value, 0) || 1;
+const shown = parts.filter((p) => p.value > 0);
+const summary = parts.map((p) => `${p.label} ${p.value}`).join(', ');
+---
+
+<figure class="seg">
+  <figcaption class="mono">{title}</figcaption>
+  <div class="bar" role="img" aria-label={`${title}. ${summary}.`}>
+    {
+      shown.map((p) => {
+        const pct = (p.value / total) * 100;
+        return (
+          <span
+            class:list={['part', p.tone]}
+            style={`flex: ${p.value} 1 0`}
+            title={`${p.label}: ${p.value} (${Math.round(pct)}%)`}
+          >
+            {pct >= 9 && <span class="n">{p.value}</span>}
+          </span>
+        );
+      })
+    }
+  </div>
+  <ul class="legend">
+    {
+      parts.map((p) => (
+        <li>
+          <span class:list={['key', p.tone]} aria-hidden="true" />
+          {p.label} <span class="count">{p.value}</span>
+        </li>
+      ))
+    }
+  </ul>
+</figure>
+
+<style>
+  .seg {
+    margin: 0;
+  }
+
+  .seg figcaption {
+    margin-bottom: 0.6rem;
+  }
+
+  .bar {
+    display: flex;
+    gap: 2px;
+    height: 28px;
+  }
+
+  .part {
+    display: flex;
+    align-items: center;
+    min-width: 6px;
+    border-radius: 4px;
+    padding: 0 0.5rem;
+  }
+
+  .n {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+
+  .red {
+    background: var(--status-red);
+    color: #fff;
+  }
+
+  .amber {
+    background: var(--status-amber);
+    color: #10161d;
+  }
+
+  .green {
+    background: var(--status-green);
+    color: #10161d;
+  }
+
+  .neutral {
+    background: var(--line-strong);
+    color: var(--ink);
+  }
+
+  .legend {
+    list-style: none;
+    padding: 0;
+    margin: 0.65rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.1rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+  }
+
+  .legend li {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .key {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+  }
+
+  .count {
+    color: var(--ink);
+  }
+</style>

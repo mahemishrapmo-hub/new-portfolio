@@ -1,0 +1,48 @@
+# Moves the synthetic Halden Vale programme forward one week, every Monday.
+# The commit to main triggers a Cloudflare Pages build, so the live snapshot on
+# the site and the CSVs under /data/ refresh without anyone touching them.
+#
+# Commits are authored by github-actions[bot] on purpose. They are visibly
+# automated and do not count towards a personal contribution graph.
+
+name: Weekly synthetic data refresh
+
+on:
+  schedule:
+    - cron: '30 6 * * 1' # 06:30 UTC every Monday
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: synthetic-refresh
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Test the engine
+        run: python -m unittest discover -s scripts/synthetic -p 'test_*.py'
+
+      - name: Generate this week
+        run: python scripts/synthetic/generate.py
+
+      - name: Commit if anything moved
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add public/data src/data/synthetic
+          if git diff --cached --quiet; then
+            echo "No change this week."
+            exit 0
+          fi
+          git commit -m "data: synthetic programme, week of $(date -u +%F)"
+          git push

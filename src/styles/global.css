@@ -16,8 +16,9 @@
   --status-amber: #e39a2d;
   --status-red: #cc4b42;
 
-  --font-display: 'Archivo', system-ui, sans-serif;
-  --font-body: 'Source Serif 4', Georgia, serif;
+  /* Self-hosted through Fontsource, imported in layouts/Base.astro. */
+  --font-display: 'Archivo Variable', 'Archivo', system-ui, sans-serif;
+  --font-body: 'Source Serif 4 Variable', 'Source Serif 4', Georgia, serif;
   --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
 
   --max: 68rem;
@@ -25,6 +26,7 @@
 }
 
 [data-theme='dark'] {
+  color-scheme: dark;
   --paper: #10161d;
   --paper-raised: #161e27;
   --ink: #e8ecef;
@@ -151,6 +153,16 @@ strong {
   background: var(--status-amber);
 }
 
+.dot.red {
+  background: var(--status-red);
+}
+
+/* waiting on someone else, not stalled on our side */
+.dot.hollow {
+  background: transparent;
+  box-shadow: inset 0 0 0 2px var(--status-amber);
+}
+
 .dot.pulse {
   animation: pulse 2.4s ease-in-out infinite;
 }
@@ -170,6 +182,16 @@ strong {
 .section {
   padding: clamp(3rem, 8vw, 5.5rem) 0;
   border-top: 1px solid var(--line);
+}
+
+.section.first {
+  border-top: 0;
+}
+
+.intro {
+  max-width: 40rem;
+  color: var(--muted);
+  margin-bottom: 2rem;
 }
 
 .section-head {
@@ -309,6 +331,33 @@ strong {
   padding: 0;
 }
 
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0 0 1.5rem;
+  font-size: 0.92rem;
+  display: block;
+  overflow-x: auto;
+}
+
+.prose th {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: var(--muted);
+  text-align: left;
+  padding: 0.5rem 1rem 0.5rem 0;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.prose td {
+  padding: 0.55rem 1rem 0.55rem 0;
+  border-bottom: 1px solid var(--line);
+  vertical-align: top;
+}
+
 .prose blockquote {
   margin: 1.5rem 0;
   padding-left: 1.25rem;
@@ -361,6 +410,36 @@ strong {
   .card:hover {
     transform: none;
   }
+}
+
+/* ---------- accessibility helpers ---------- */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 20;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.5rem 0.9rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.skip:focus {
+  top: 0.75rem;
 }
 
 /* ---------- focus ---------- */

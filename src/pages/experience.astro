@@ -5,7 +5,7 @@ import { roles, credentials } from '../data/experience';
 
 <Base
   title="Experience"
-  description="Career history of Mahe Mishra, NHS programme delivery and data."
+  description="Career history of Mahe Mishra, PMO and Data Analyst in NHS capital programmes."
 >
   <section class="section first">
     <div class="wrap">
@@ -57,6 +57,7 @@ import { roles, credentials } from '../data/experience';
               <div class="body">
                 <h3>{c.title}</h3>
                 <p class="org mono">
+                  {c.state !== 'done' && <span class:list={['dot', c.state === 'in-progress' ? 'amber' : 'amber hollow']} aria-hidden="true" />}
                   {c.org}
                   {c.detail && ` · ${c.detail}`}
                 </p>
@@ -70,10 +71,6 @@ import { roles, credentials } from '../data/experience';
 </Base>
 
 <style>
-  .first {
-    border-top: 0;
-  }
-
   .register {
     display: flex;
     flex-direction: column;
@@ -104,6 +101,10 @@ import { roles, credentials } from '../data/experience';
   }
 
   .org {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    flex-wrap: wrap;
     margin: 0.35rem 0 0.75rem;
     text-transform: none;
     letter-spacing: 0.03em;

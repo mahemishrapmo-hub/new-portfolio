@@ -1,0 +1,312 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Snapshot from '../../components/snapshot/Snapshot.astro';
+import { fmtDate, getProjects, statusDot, statusLabel } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const projects = await getProjects();
+  return projects.map((project, i) => ({
+    params: { slug: project.id },
+    props: { project, prev: projects[i - 1], next: projects[i + 1] },
+  }));
+}
+
+const { project, prev, next } = Astro.props;
+const { data } = project;
+const { Content } = await render(project);
+const cs = data.caseStudy ? await getEntry('cases', data.caseStudy) : undefined;
+const external = (href: string) => /^https?:\/\//.test(href);
+---
+
+<Base title={data.title} description={data.summary}>
+  <article class="section first">
+    <div class="wrap">
+      <p class="mono crumb"><a href="/projects/">Projects</a> / {data.ref}</p>
+      <div class="state">
+        <span class:list={['dot', statusDot[data.status]]} aria-hidden="true"></span>
+        <span class="mono">{statusLabel[data.status]}</span>
+      </div>
+      <h1 class="title">{data.title}</h1>
+      <p class="lede">{data.summary}</p>
+
+      <dl class="control">
+        <div>
+          <dt class="mono">Ref</dt>
+          <dd>{data.ref}</dd>
+        </div>
+        <div>
+          <dt class="mono">Status</dt>
+          <dd>{statusLabel[data.status]}</dd>
+        </div>
+        <div class="wide">
+          <dt class="mono">Data</dt>
+          <dd>{data.data}</dd>
+        </div>
+        <div class="wide">
+          <dt class="mono">Stack</dt>
+          <dd>{data.stack.join(' · ')}</dd>
+        </div>
+        <div class="wide">
+          <dt class="mono">Last updated</dt>
+          <dd>{fmtDate(data.updated)}</dd>
+        </div>
+      </dl>
+
+      {
+        data.links.length > 0 && (
+          <ul class="links">
+            {data.links.map((l) => (
+              <li>
+                <a href={l.href} {...(external(l.href) ? { rel: 'noopener' } : {})}>
+                  {l.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        )
+      }
+
+      <div class="prose body">
+        <Content />
+      </div>
+
+      {
+        data.snapshot && (
+          <div class="live">
+            <p class="mono label">Live snapshot</p>
+            <Snapshot variant={data.snapshot} />
+          </div>
+        )
+      }
+
+      {
+        data.embed && (
+          <div class="embed">
+            <iframe src={data.embed.src} title={data.embed.title} loading="lazy" allowfullscreen />
+          </div>
+        )
+      }
+
+      {
+        cs && (
+          <a class="cs" href={`/cases/${cs.id}/`}>
+            <span class="ref">{cs.data.ref}</span>
+            <span class="mono">Case study</span>
+            <span class="cs-title">{cs.data.title}</span>
+            <span class="cs-outcome">
+              <strong>{cs.data.outcomes[0].value}</strong> {cs.data.outcomes[0].label}
+            </span>
+          </a>
+        )
+      }
+
+      <nav class="pager" aria-label="More projects">
+        {prev ? (
+          <a href={`/projects/${prev.id}/`}>
+            <span class="mono">Previous · {prev.data.ref}</span>
+            {prev.data.title}
+          </a>
+        ) : (
+          <span />
+        )}
+        {next && (
+          <a class="right" href={`/projects/${next.id}/`}>
+            <span class="mono">Next · {next.data.ref}</span>
+            {next.data.title}
+          </a>
+        )}
+      </nav>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .crumb {
+    margin-bottom: 1.5rem;
+  }
+
+  .crumb a {
+    color: var(--muted);
+  }
+
+  .state {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .title {
+    font-size: clamp(2.1rem, 5.5vw, 3.6rem);
+    max-width: 50rem;
+  }
+
+  .lede {
+    max-width: 42rem;
+    font-size: 1.15rem;
+    color: var(--muted);
+    margin: 1.25rem 0 2rem;
+  }
+
+  .control {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+    background: var(--paper-raised);
+    margin: 0 0 1.5rem;
+  }
+
+  .control div {
+    padding: 0.85rem 1rem;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .control .wide {
+    grid-column: span 2;
+  }
+
+  .control dt {
+    margin-bottom: 0.3rem;
+  }
+
+  .control dd {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.45;
+  }
+
+  .links {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+  }
+
+  .links a {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+  }
+
+  .links a::after {
+    content: ' →';
+  }
+
+  .body {
+    margin-bottom: 2.5rem;
+  }
+
+  .live {
+    margin: 0 0 2.5rem;
+  }
+
+  .label {
+    margin-bottom: 0.75rem;
+  }
+
+  .embed {
+    aspect-ratio: 16 / 10;
+    border: 1px solid var(--line);
+    margin: 0 0 2.5rem;
+  }
+
+  .embed iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  .cs {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.4rem 1rem;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    background: var(--paper-raised);
+    padding: 1.2rem 1.4rem;
+    text-decoration: none;
+    color: inherit;
+    max-width: 46rem;
+    margin-bottom: 3rem;
+  }
+
+  .cs:hover .cs-title {
+    color: var(--accent-ink);
+  }
+
+  .cs-title {
+    grid-column: 1 / -1;
+    font-family: var(--font-display);
+    font-stretch: 112%;
+    font-weight: 700;
+    font-size: 1.15rem;
+    line-height: 1.3;
+  }
+
+  .cs-outcome {
+    grid-column: 1 / -1;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  .cs-outcome strong {
+    color: var(--ink);
+  }
+
+  .pager {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    border-top: 1px solid var(--line);
+    padding-top: 1.5rem;
+  }
+
+  .pager a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    text-decoration: none;
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-stretch: 108%;
+    font-weight: 700;
+  }
+
+  .pager a:hover {
+    color: var(--accent-ink);
+  }
+
+  .pager .right {
+    text-align: right;
+    align-items: flex-end;
+  }
+
+  @media (max-width: 760px) {
+    .control {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .control {
+      grid-template-columns: 1fr;
+    }
+
+    .control .wide {
+      grid-column: auto;
+    }
+
+    .pager {
+      grid-template-columns: 1fr;
+    }
+
+    .pager .right {
+      text-align: left;
+      align-items: flex-start;
+    }
+  }
+</style>

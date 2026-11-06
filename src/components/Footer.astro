@@ -2,11 +2,11 @@
 import { profile } from '../data/profile';
 
 // Evaluated at build time, so every deploy refreshes the stamp.
-const built = new Date();
-const stamp = built.toLocaleDateString('en-GB', {
+const stamp = new Date().toLocaleDateString('en-GB', {
   year: 'numeric',
   month: 'short',
   day: '2-digit',
+  timeZone: 'Europe/London',
 });
 ---
 
@@ -15,11 +15,20 @@ const stamp = built.toLocaleDateString('en-GB', {
     <div>
       <p class="mono">Contact</p>
       <a href={`mailto:${profile.email}`}>{profile.email}</a>
+      <a href={profile.phoneHref}>{profile.phone}</a>
+      <a href={profile.cvUrl}>CV</a>
     </div>
     <div>
       <p class="mono">Elsewhere</p>
       <a href={profile.github}>GitHub</a>
       <a href={profile.linkedin}>LinkedIn</a>
+      <a href="/rss.xml">RSS</a>
+    </div>
+    <div>
+      <p class="mono">Register</p>
+      <a href="/now/">Now</a>
+      <a href="/uses/">Uses</a>
+      <a href="/data/raid_log.csv">Synthetic data</a>
     </div>
     <div class="stamp">
       <p class="mono">Document control</p>
@@ -37,7 +46,7 @@ const stamp = built.toLocaleDateString('en-GB', {
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 1.5rem;
   }
 

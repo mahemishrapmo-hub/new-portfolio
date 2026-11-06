@@ -2,22 +2,27 @@
 import Base from '../layouts/Base.astro';
 import StatusRow from '../components/StatusRow.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import CaseCard from '../components/CaseCard.astro';
+import Snapshot from '../components/snapshot/Snapshot.astro';
 import { profile } from '../data/profile';
-import { projects } from '../data/projects';
 import { stack } from '../data/experience';
+import { getCases, getProjects } from '../lib/content';
+import { personSchema, websiteSchema } from '../lib/schema';
+
+const featured = (await getProjects()).filter((p) => p.data.featured).slice(0, 6);
+const cases = await getCases();
 ---
 
-<Base>
+<Base jsonLd={[personSchema, websiteSchema]}>
   <section class="hero">
     <div class="wrap">
       <p class="mono reveal d1">Register / {profile.name} / {profile.location}</p>
-      <h1 class="reveal d2">
-        Programme delivery,<br />backed by data.
-      </h1>
+      <h1 class="reveal d2">PMO and<br />Data Analyst.</h1>
+      <p class="sub reveal d2">{profile.headline}.</p>
       <p class="lede reveal d2">
-        I am {profile.name}, {profile.role} on the {profile.programme}, a £1B+ NEC
-        scheme at {profile.org}. I keep governance moving and build the reporting
-        that tells a board the truth.
+        I am {profile.name}, at {profile.org} on the {profile.programme}, a £1B+ NEC
+        scheme. I build the dashboards, trackers and automation that tell a
+        programme board the truth.
       </p>
       <StatusRow />
       <div class="cta reveal d3">
@@ -34,8 +39,9 @@ import { stack } from '../data/experience';
         <h2>Selected work</h2>
       </div>
       <div class="grid">
-        {projects.map((p) => <ProjectCard project={p} />)}
+        {featured.map((p) => <ProjectCard project={p} />)}
       </div>
+      <p class="more"><a class="mono" href="/projects/">All projects</a></p>
     </div>
   </section>
 
@@ -43,6 +49,36 @@ import { stack } from '../data/experience';
     <div class="wrap">
       <div class="section-head">
         <span class="ref">02</span>
+        <h2>Live programme</h2>
+      </div>
+      <p class="intro">
+        A fictional £490m hospital programme that moves forward every Monday on
+        its own. Every risk, action and figure below is synthetic, rebuilt by a
+        scheduled job, and published as open CSVs that the dashboards read from.
+      </p>
+      <Snapshot variant="compact" />
+      <p class="more">
+        <a class="mono" href="/projects/portfolio-dashboard/">Full snapshot and the dashboard behind it</a>
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="ref">03</span>
+        <h2>Case studies</h2>
+      </div>
+      <div class="cases">
+        {cases.map((c) => <CaseCard item={c} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="ref">04</span>
         <h2>Working stack</h2>
       </div>
       <div class="stack-grid">
@@ -65,12 +101,12 @@ import { stack } from '../data/experience';
   <section class="section">
     <div class="wrap contact">
       <div class="section-head">
-        <span class="ref">03</span>
+        <span class="ref">05</span>
         <h2>Get in touch</h2>
       </div>
       <p class="prose">
-        Open to conversations about programme delivery, PMO and data roles. The
-        fastest route is email.
+        Open to conversations about PMO data, BI and analyst roles. The fastest
+        route is email.
       </p>
       <a class="btn solid" href={`mailto:${profile.email}`}>{profile.email}</a>
     </div>
@@ -86,10 +122,21 @@ import { stack } from '../data/experience';
     margin-bottom: 1.25rem;
   }
 
+  .sub {
+    font-family: var(--font-mono);
+    font-size: clamp(0.82rem, 1.6vw, 0.95rem);
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    max-width: 44rem;
+    margin: 1.5rem 0 0;
+    padding-left: 0.9rem;
+    border-left: 3px solid var(--accent);
+  }
+
   .lede {
     max-width: 38rem;
     font-size: 1.15rem;
-    margin: 1.5rem 0 2rem;
+    margin: 1.25rem 0 2rem;
     color: var(--muted);
   }
 
@@ -104,6 +151,21 @@ import { stack } from '../data/experience';
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 1rem;
+  }
+
+  .more {
+    margin: 1.5rem 0 0;
+  }
+
+  .more a {
+    color: var(--accent-ink);
+    text-transform: none;
+    letter-spacing: 0.03em;
+    font-size: 0.8rem;
+  }
+
+  .cases {
+    border-bottom: 1px solid var(--line);
   }
 
   .stack-grid {

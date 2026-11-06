@@ -1,0 +1,126 @@
+---
+import Base from '../layouts/Base.astro';
+import { now } from '../data/now';
+
+const reviewed = new Date(`${now.reviewed}T00:00:00Z`);
+const fmt = reviewed.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+---
+
+<Base title="Now" description="What Mahe Mishra is working on, building and studying this month.">
+  <section class="section first">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="ref">NOW</span>
+        <h2>Now</h2>
+      </div>
+
+      <div class="review" data-reviewed={now.reviewed}>
+        <span class="dot green" data-dot aria-hidden="true"></span>
+        <span class="mono">Last reviewed</span>
+        <span class="value">{fmt}</span>
+        <span class="value muted" data-age></span>
+      </div>
+
+      <div class="register">
+        {
+          now.sections.map((s) => (
+            <section class="entry">
+              <div class="meta">
+                <span class="ref">{s.ref}</span>
+              </div>
+              <div class="body">
+                <h3>{s.heading}</h3>
+                <ul>
+                  {s.items.map((i) => (
+                    <li>{i}</li>
+                  ))}
+                </ul>
+              </div>
+            </section>
+          ))
+        }
+      </div>
+
+      <p class="note mono">
+        A <a href="https://nownownow.com/about">now page</a> says what I am focused on at this point in my life. Reviewed monthly.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .review {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 0.8rem;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--status-green);
+    background: var(--paper-raised);
+    padding: 0.85rem 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  .review.stale {
+    border-left-color: var(--status-amber);
+  }
+
+  .value {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+  }
+
+  .muted {
+    color: var(--muted);
+  }
+
+  .register {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .entry {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    gap: 1.5rem;
+    padding: 1.6rem 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .body ul {
+    padding-left: 1.1rem;
+    margin: 0.6rem 0 0;
+  }
+
+  .body li {
+    margin-bottom: 0.4rem;
+    color: var(--muted);
+  }
+
+  .note {
+    margin-top: 2rem;
+    text-transform: none;
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 640px) {
+    .entry {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+    }
+  }
+</style>
+
+<script>
+  // Age is computed in the browser, so the page admits when it is stale.
+  const el = document.querySelector<HTMLElement>('.review');
+  if (el?.dataset.reviewed) {
+    const days = Math.floor((Date.now() - new Date(`${el.dataset.reviewed}T00:00:00Z`).getTime()) / 86_400_000);
+    const age = el.querySelector('[data-age]');
+    if (age) age.textContent = days < 1 ? 'today' : `${days} day${days === 1 ? '' : 's'} ago`;
+    if (days > 45) {
+      el.classList.add('stale');
+      el.querySelector('[data-dot]')?.classList.replace('green', 'amber');
+    }
+  }
+</script>

@@ -1,0 +1,174 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { getCases, statusDot, statusLabel } from '../../lib/content';
+import { articleSchema } from '../../lib/schema';
+
+export async function getStaticPaths() {
+  const cases = await getCases();
+  return cases.map((item) => ({ params: { slug: item.id }, props: { item } }));
+}
+
+const { item } = Astro.props;
+const { data } = item;
+const { Content } = await render(item);
+const project = data.project ? await getEntry('projects', data.project) : undefined;
+const url = new URL(Astro.url.pathname, Astro.site).toString();
+---
+
+<Base
+  title={data.title}
+  description={data.summary}
+  type="article"
+  jsonLd={articleSchema({ title: data.title, description: data.summary, url, published: data.pubDate })}
+>
+  <article class="section first">
+    <div class="wrap">
+      <p class="mono crumb"><a href="/cases/">Case studies</a> / {data.ref}</p>
+      <h1 class="title">{data.title}</h1>
+      <p class="lede">{data.summary}</p>
+      <p class="mono role">{data.role} · {data.period}</p>
+
+      <ul class="outcomes" aria-label="Outcomes">
+        {
+          data.outcomes.map((o) => (
+            <li>
+              <span class="value">{o.value}</span>
+              <span class="label">{o.label}</span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="prose">
+        <Content />
+      </div>
+
+      {
+        project && (
+          <a class="related" href={`/projects/${project.id}/`}>
+            <span class="mono">The build</span>
+            <span class="row">
+              <span class="ref">{project.data.ref}</span>
+              <span class:list={['dot', statusDot[project.data.status]]} aria-hidden="true" />
+              <span class="mono">{statusLabel[project.data.status]}</span>
+            </span>
+            <span class="r-title">{project.data.title}</span>
+          </a>
+        )
+      }
+
+      <p class="back"><a href="/cases/">All case studies</a></p>
+    </div>
+  </article>
+</Base>
+
+<style>
+  .crumb {
+    margin-bottom: 1.5rem;
+  }
+
+  .crumb a {
+    color: var(--muted);
+  }
+
+  .title {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    max-width: 50rem;
+  }
+
+  .lede {
+    max-width: 42rem;
+    font-size: 1.15rem;
+    color: var(--muted);
+    margin: 1.25rem 0 0.75rem;
+  }
+
+  .role {
+    margin-bottom: 2rem;
+  }
+
+  .outcomes {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .outcomes li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1.25rem 1.25rem 1.25rem 0;
+  }
+
+  .outcomes li + li {
+    padding-left: 1.25rem;
+    border-left: 1px solid var(--line);
+  }
+
+  .value {
+    font-family: var(--font-display);
+    font-stretch: 112%;
+    font-weight: 800;
+    font-size: clamp(2rem, 4.5vw, 2.8rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+
+  .related {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    background: var(--paper-raised);
+    padding: 1.2rem 1.4rem;
+    text-decoration: none;
+    color: inherit;
+    max-width: 42rem;
+    margin-top: 3rem;
+  }
+
+  .related:hover .r-title {
+    color: var(--accent-ink);
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .r-title {
+    font-family: var(--font-display);
+    font-stretch: 112%;
+    font-weight: 700;
+    font-size: 1.15rem;
+  }
+
+  .back {
+    margin-top: 2.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 640px) {
+    .outcomes li + li {
+      padding-left: 0;
+      border-left: 0;
+      border-top: 1px solid var(--line);
+    }
+  }
+</style>
