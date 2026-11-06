@@ -15,6 +15,7 @@ const stamp = new Date().toLocaleDateString('en-GB', {
     <div>
       <p class="mono">Contact</p>
       <a href={`mailto:${profile.email}`}>{profile.email}</a>
+      <a href={profile.phoneHref}>{profile.phone}</a>
       <a href={profile.cvUrl}>CV</a>
     </div>
     <div>
