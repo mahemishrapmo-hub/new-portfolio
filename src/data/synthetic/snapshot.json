@@ -1,0 +1,231 @@
+{
+  "programme": "Halden Vale Health Campus Programme",
+  "as_of": "2026-11-02",
+  "iso_week": 45,
+  "weeks_running": 26,
+  "last_meeting": "2026-10-22",
+  "next_meeting": "2026-11-05",
+  "portfolio": {
+    "projects": 9,
+    "budget_gbp_m": 490.1,
+    "forecast_gbp_m": 495.3,
+    "variance_gbp_m": 5.2,
+    "variance_pct": 1.07,
+    "rag": {
+      "Green": 6,
+      "Amber": 1,
+      "Red": 1
+    },
+    "not_started": 1
+  },
+  "raid": {
+    "open_by_type": {
+      "Risk": 43,
+      "Issue": 4,
+      "Assumption": 7,
+      "Dependency": 3
+    },
+    "risk_bands": {
+      "High": 10,
+      "Medium": 18,
+      "Low": 15
+    },
+    "reviews_overdue": 2,
+    "raised_this_week": 2,
+    "closed_this_week": 1,
+    "open_risks_delta": 1,
+    "high_exposure_delta": 1,
+    "top_risks": [
+      {
+        "id": "R-011",
+        "workstream": "Finance and Commercial",
+        "title": "Funding drawdown profile misaligned with spend",
+        "score": 25,
+        "trend": "Up",
+        "owner_role": "Commercial Lead"
+      },
+      {
+        "id": "R-051",
+        "workstream": "Digital and IT",
+        "title": "Legacy system decommissioning dependencies not mapped",
+        "score": 25,
+        "trend": "Flat",
+        "owner_role": "Digital Lead"
+      },
+      {
+        "id": "R-053",
+        "workstream": "Digital and IT",
+        "title": "Network hardware lead times extend",
+        "score": 25,
+        "trend": "Flat",
+        "owner_role": "Digital Lead"
+      },
+      {
+        "id": "R-045",
+        "workstream": "Clinical Mobilisation",
+        "title": "Training plan for new building not resourced",
+        "score": 20,
+        "trend": "Flat",
+        "owner_role": "Clinical Transition Lead"
+      },
+      {
+        "id": "R-047",
+        "workstream": "Enabling Works",
+        "title": "Decant accommodation not ready before demolition",
+        "score": 20,
+        "trend": "Flat",
+        "owner_role": "Construction Project Manager"
+      }
+    ]
+  },
+  "actions": {
+    "open": 20,
+    "on_hold": 1,
+    "overdue": 7,
+    "overdue_delta": 1,
+    "closed_total": 39,
+    "due_before_next_meeting": 1,
+    "attention": [
+      {
+        "id": "A048",
+        "workstream": "Main Build",
+        "description": "Agree waste management route with contractor",
+        "owner_role": "Programme Director",
+        "due": "2026-10-01",
+        "status": "In progress",
+        "flag": "Overdue",
+        "latest": "16.10.2026 - PD - Scope confirmed, pricing expected within two weeks."
+      },
+      {
+        "id": "A034",
+        "workstream": "Main Build",
+        "description": "Close out design comments on level 3 layouts",
+        "owner_role": "Construction Project Manager",
+        "due": "2026-10-08",
+        "status": "In progress",
+        "flag": "Overdue",
+        "latest": "17.10.2026 - CPM - Awaiting supplier response, chased by email."
+      },
+      {
+        "id": "A038",
+        "workstream": "Enabling Works",
+        "description": "Agree access arrangements with site neighbours",
+        "owner_role": "Enabling Works Lead",
+        "due": "2026-10-22",
+        "status": "In progress",
+        "flag": "Overdue",
+        "latest": "08.10.2026 - EWL - Revised programme received and under review."
+      },
+      {
+        "id": "A046",
+        "workstream": "Clinical Mobilisation",
+        "description": "Draft training needs analysis for new building",
+        "owner_role": "Clinical Transition Lead",
+        "due": "2026-10-22",
+        "status": "In progress",
+        "flag": "Overdue",
+        "latest": "22.10.2026 - CTL - Application submitted, decision expected next month."
+      },
+      {
+        "id": "A047",
+        "workstream": "Enabling Works",
+        "description": "Confirm licence application status with highways",
+        "owner_role": "Enabling Works Lead",
+        "due": "2026-10-22",
+        "status": "In progress",
+        "flag": "Overdue",
+        "latest": "08.10.2026 - EWL - Information shared with estates, feedback pending."
+      },
+      {
+        "id": "A054",
+        "workstream": "Estates and Facilities",
+        "description": "Confirm soft FM tender evaluation panel",
+        "owner_role": "Estates Lead",
+        "due": "2026-10-22",
+        "status": "New",
+        "flag": "Overdue",
+        "latest": ""
+      }
+    ]
+  },
+  "history": [
+    {
+      "as_of": "2026-08-17",
+      "open_risks": 36,
+      "high_exposure_risks": 7,
+      "overdue_actions": 9
+    },
+    {
+      "as_of": "2026-08-24",
+      "open_risks": 36,
+      "high_exposure_risks": 8,
+      "overdue_actions": 12
+    },
+    {
+      "as_of": "2026-08-31",
+      "open_risks": 38,
+      "high_exposure_risks": 7,
+      "overdue_actions": 4
+    },
+    {
+      "as_of": "2026-09-07",
+      "open_risks": 40,
+      "high_exposure_risks": 10,
+      "overdue_actions": 4
+    },
+    {
+      "as_of": "2026-09-14",
+      "open_risks": 41,
+      "high_exposure_risks": 12,
+      "overdue_actions": 7
+    },
+    {
+      "as_of": "2026-09-21",
+      "open_risks": 40,
+      "high_exposure_risks": 12,
+      "overdue_actions": 9
+    },
+    {
+      "as_of": "2026-09-28",
+      "open_risks": 39,
+      "high_exposure_risks": 10,
+      "overdue_actions": 2
+    },
+    {
+      "as_of": "2026-10-05",
+      "open_risks": 40,
+      "high_exposure_risks": 10,
+      "overdue_actions": 5
+    },
+    {
+      "as_of": "2026-10-12",
+      "open_risks": 40,
+      "high_exposure_risks": 9,
+      "overdue_actions": 7
+    },
+    {
+      "as_of": "2026-10-19",
+      "open_risks": 40,
+      "high_exposure_risks": 9,
+      "overdue_actions": 7
+    },
+    {
+      "as_of": "2026-10-26",
+      "open_risks": 42,
+      "high_exposure_risks": 9,
+      "overdue_actions": 6
+    },
+    {
+      "as_of": "2026-11-02",
+      "open_risks": 43,
+      "high_exposure_risks": 10,
+      "overdue_actions": 7
+    }
+  ],
+  "files": [
+    "portfolio.csv",
+    "raid_log.csv",
+    "actions.csv",
+    "weekly_history.csv"
+  ]
+}

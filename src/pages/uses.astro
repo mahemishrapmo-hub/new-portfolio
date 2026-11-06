@@ -1,0 +1,106 @@
+---
+import Base from '../layouts/Base.astro';
+import { uses } from '../data/uses';
+---
+
+<Base title="Uses" description="The software and kit Mahe Mishra uses for analysis, reporting and building.">
+  <section class="section first">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="ref">USE</span>
+        <h2>Uses</h2>
+      </div>
+      <p class="intro">The software and kit behind the work. Personal kit only, nothing issued by an employer.</p>
+
+      <div class="register">
+        {
+          uses.map((g) => (
+            <section class="entry">
+              <div class="meta">
+                <span class="ref">{g.ref}</span>
+                <span class="mono">{g.group}</span>
+              </div>
+              <dl>
+                {g.items.map((i) => (
+                  <div class="row">
+                    <dt>{'href' in i && i.href ? <a href={i.href}>{i.name}</a> : i.name}</dt>
+                    <dd>{i.note}</dd>
+                  </div>
+                ))}
+              </dl>
+            </section>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .register {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .entry {
+    display: grid;
+    grid-template-columns: 12rem 1fr;
+    gap: 1.5rem;
+    padding: 1.6rem 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  dl {
+    margin: 0;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    gap: 1rem;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .row:last-child {
+    border-bottom: 0;
+  }
+
+  dt {
+    font-family: var(--font-display);
+    font-stretch: 108%;
+    font-weight: 700;
+    font-size: 0.98rem;
+  }
+
+  dd {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 760px) {
+    .entry {
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+    }
+
+    .meta {
+      flex-direction: row;
+      gap: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .row {
+      grid-template-columns: 1fr;
+      gap: 0.15rem;
+    }
+  }
+</style>

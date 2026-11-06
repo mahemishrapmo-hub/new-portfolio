@@ -1,20 +1,36 @@
 ---
+// Fonts are served from this domain. No third-party font requests.
+import '@fontsource-variable/archivo/wdth.css';
+import '@fontsource-variable/source-serif-4/opsz.css';
+import '@fontsource-variable/source-serif-4/opsz-italic.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import archivoLatin from '@fontsource-variable/archivo/files/archivo-latin-wdth-normal.woff2?url';
+import serifLatin from '@fontsource-variable/source-serif-4/files/source-serif-4-latin-opsz-normal.woff2?url';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { profile } from '../data/profile';
+import { ogPathFor } from '../lib/og';
 
 interface Props {
   title?: string;
   description?: string;
+  type?: 'website' | 'article';
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
-const { title, description } = Astro.props;
-const pageTitle = title ? `${title} · ${profile.name}` : `${profile.name} · ${profile.headline}`;
-const pageDescription =
-  description ??
-  `${profile.name}, ${profile.role} at ${profile.org}. ${profile.headline}.`;
+const { title, description, type = 'website', jsonLd } = Astro.props;
+const pageTitle = title ? `${title} · ${profile.name}` : `${profile.name} · ${profile.role}`;
+const pageDescription = description ?? `${profile.name}, ${profile.role}. ${profile.headline}.`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(ogPathFor(Astro.url.pathname), Astro.site);
+
+// Optional self-hosted analytics. Set both in Cloudflare Pages environment variables
+// to switch on, leave unset and nothing loads.
+const umamiSrc = import.meta.env.PUBLIC_UMAMI_SRC;
+const umamiId = import.meta.env.PUBLIC_UMAMI_WEBSITE_ID;
+const schema = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 ---
 
 <!doctype html>
@@ -24,34 +40,48 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{pageTitle}</title>
     <meta name="description" content={pageDescription} />
+    <meta name="author" content={profile.name} />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#f7f7f4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#10161d" media="(prefers-color-scheme: dark)" />
     <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="application/rss+xml" title={`${profile.name}, writing and case studies`} href="/rss.xml" />
+    <link rel="preload" href={archivoLatin} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={serifLatin} as="font" type="font/woff2" crossorigin />
+
+    <meta property="og:site_name" content={profile.name} />
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={pageDescription} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
     <meta property="og:url" content={canonical} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <meta property="og:image" content={new URL('/og.png', Astro.site)} />
-    <meta property="og:image:width" content="1558" />
-    <meta property="og:image:height" content="1072" />
+    <meta property="og:locale" content="en_GB" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={pageTitle} />
     <meta name="twitter:card" content="summary_large_image" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=IBM+Plex+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400..600&display=swap"
-      rel="stylesheet"
-    />
+
+    {schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify({ '@context': 'https://schema.org', ...s })} />)}
+
     <script is:inline>
-      // Runs before paint. Respects saved choice, falls back to system.
-      const saved = localStorage.getItem('theme');
-      const preferred =
-        saved ?? (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.dataset.theme = preferred;
+      // Runs before paint. Respects a saved choice, otherwise follows the system.
+      (function () {
+        var saved = null;
+        try {
+          saved = localStorage.getItem('theme');
+        } catch (e) {}
+        var system = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = saved || system;
+      })();
     </script>
+    {umamiSrc && umamiId && <script is:inline defer src={umamiSrc} data-website-id={umamiId} />}
   </head>
   <body>
+    <a class="skip" href="#main">Skip to content</a>
     <Header />
-    <main>
+    <main id="main">
       <slot />
     </main>
     <Footer />

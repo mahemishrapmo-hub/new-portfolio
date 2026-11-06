@@ -1,5 +1,13 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const sections = [
+  { ref: 'PRJ', href: '/projects/', label: 'Projects' },
+  { ref: 'CS', href: '/cases/', label: 'Case studies' },
+  { ref: 'EXP', href: '/experience/', label: 'Experience' },
+  { ref: 'WRT', href: '/writing/', label: 'Writing' },
+  { ref: 'NOW', href: '/now/', label: 'Now' },
+];
 ---
 
 <Base title="Not found">
@@ -8,21 +16,73 @@ import Base from '../layouts/Base.astro';
       <p class="mono">Ref not found</p>
       <h1>404</h1>
       <p class="msg">
-        This entry does not exist in the register.
-        <a href="/">Return to the index.</a>
+        <span class="path mono" id="missing"></span>
+        This entry does not exist in the register. It may have been renumbered.
       </p>
+      <ul class="index">
+        {
+          sections.map((s) => (
+            <li>
+              <a href={s.href}>
+                <span class="ref">{s.ref}</span>
+                <span>{s.label}</span>
+              </a>
+            </li>
+          ))
+        }
+        <li>
+          <a href="/">
+            <span class="ref">IDX</span>
+            <span>Return to the index</span>
+          </a>
+        </li>
+      </ul>
     </div>
   </section>
 </Base>
 
 <style>
   .first {
-    border-top: 0;
     padding-top: 6rem;
   }
 
   .msg {
     margin-top: 1.5rem;
     color: var(--muted);
+    max-width: 38rem;
+  }
+
+  .path {
+    display: block;
+    color: var(--ink);
+    text-transform: none;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.4rem;
+    word-break: break-all;
+  }
+
+  .index {
+    list-style: none;
+    padding: 0;
+    margin: 2.5rem 0 0;
+    max-width: 30rem;
+  }
+
+  .index a {
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    padding: 0.7rem 0;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+    color: var(--ink);
+  }
+
+  .index a:hover span:last-child {
+    color: var(--accent-ink);
   }
 </style>
+
+<script>
+  const el = document.getElementById('missing');
+  if (el) el.textContent = location.pathname;
+</script>

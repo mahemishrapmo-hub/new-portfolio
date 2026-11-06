@@ -1,0 +1,213 @@
+as_of,action_id,workstream,category,raised,description,updates,owner,owner_role,due,status,overdue,due_before_next_meeting,closed
+2026-11-02,A001,Main Build,Commissioning,2026-03-26,Provide updated cost estimate for revised layout,"30.07.2026 - PD - Superseded by board decision, no further work needed.
+16.07.2026 - PD - Draft circulated for comment, responses due end of week.
+18.06.2026 - PD - Workshop held, comments being consolidated.
+04.06.2026 - PD - Application submitted, decision expected next month.
+21.05.2026 - PD - Awaiting supplier response, chased by email.
+07.05.2026 - PD - Scope confirmed, pricing expected within two weeks.
+09.04.2026 - PD - Paper submitted to programme board for approval.",PD,Programme Director,2026-07-02,Closed,No,No,2026-07-30
+2026-11-02,A002,Main Build,Construction,2026-03-26,Circulate draft method statement for review,"08.10.2026 - CPM - Superseded by board decision, no further work needed.
+24.09.2026 - CPM - Scope confirmed, pricing expected within two weeks.
+27.08.2026 - CPM - Awaiting supplier response, chased by email.
+13.08.2026 - CPM - Cost estimate requested from the quantity surveyor.
+30.07.2026 - CPM - Scope confirmed, pricing expected within two weeks.
+16.07.2026 - CPM - Restarted following board decision.
+04.06.2026 - CPM - Paused until design freeze is confirmed.
+21.05.2026 - CPM - Information shared with estates, feedback pending.
+07.05.2026 - CPM - Application submitted, decision expected next month.
+09.04.2026 - CPM - Revised programme received and under review.",CPM,Construction Project Manager,2026-10-08,Closed,No,No,2026-10-08
+2026-11-02,A003,Digital and IT,Cyber,2026-04-09,Provide data migration test results,"04.06.2026 - DGL - Superseded by board decision, no further work needed.
+21.05.2026 - DGL - Scope confirmed, pricing expected within two weeks.
+07.05.2026 - DGL - Options narrowed to two, recommendation being drafted.
+23.04.2026 - DGL - Paper submitted to programme board for approval.",DGL,Digital Lead,2026-05-21,Closed,No,No,2026-06-04
+2026-11-02,A004,Estates and Facilities,Sustainability,2026-03-26,Confirm soft FM tender evaluation panel,"07.05.2026 - ESL - Complete, evidence saved to the programme library.
+09.04.2026 - ESL - Awaiting supplier response, chased by email.",ESL,Estates Lead,2026-04-23,Closed,No,No,2026-05-07
+2026-11-02,A005,Main Build,Construction,2026-02-26,Issue revised programme showing critical path,"04.06.2026 - PD - Delivered and confirmed by the chair.
+07.05.2026 - PD - Meeting held with contractor, next steps agreed.
+12.03.2026 - PD - Awaiting supplier response, chased by email.",PD,Programme Director,2026-05-21,Closed,No,No,2026-06-04
+2026-11-02,A006,Main Build,Design,2026-03-26,Close out design comments on level 3 layouts,"04.06.2026 - PD - Complete, evidence saved to the programme library.
+09.04.2026 - PD - Cost estimate requested from the quantity surveyor.",PD,Programme Director,2026-05-07,Closed,No,No,2026-06-04
+2026-11-02,A007,Finance and Commercial,Finance,2026-03-26,Produce options paper for board on car park phasing,"18.06.2026 - CML - Superseded by board decision, no further work needed.
+04.06.2026 - CML - Survey booked, results to come back to the next meeting.
+21.05.2026 - CML - Paper submitted to programme board for approval.
+07.05.2026 - CML - Scope confirmed, pricing expected within two weeks.
+09.04.2026 - CML - Options narrowed to two, recommendation being drafted.",CML,Commercial Lead,2026-06-04,Closed,No,No,2026-06-18
+2026-11-02,A008,Enabling Works,Demolition,2026-03-26,Confirm survey scope and issue instruction to consultant,"18.06.2026 - CPM - Delivered and confirmed by the chair.
+04.06.2026 - CPM - Survey booked, results to come back to the next meeting.
+21.05.2026 - CPM - Scope confirmed, pricing expected within two weeks.
+07.05.2026 - CPM - Cost estimate requested from the quantity surveyor.
+09.04.2026 - CPM - Information shared with estates, feedback pending.",CPM,Construction Project Manager,2026-06-18,Closed,No,No,2026-06-18
+2026-11-02,A009,Digital and IT,Cyber,2026-04-09,Share interface specification with EPR supplier,"04.06.2026 - DGL - Complete, evidence saved to the programme library.
+21.05.2026 - DGL - Meeting held with contractor, next steps agreed.
+07.05.2026 - DGL - Options narrowed to two, recommendation being drafted.
+23.04.2026 - DGL - Application submitted, decision expected next month.",DGL,Digital Lead,2026-06-04,Closed,No,No,2026-06-04
+2026-11-02,A010,Digital and IT,Digital,2026-03-12,Confirm cyber assurance timeline with supplier,"07.05.2026 - DGL - Superseded by board decision, no further work needed.
+26.03.2026 - DGL - Application submitted, decision expected next month.",DGL,Digital Lead,2026-03-26,Closed,No,No,2026-05-07
+2026-11-02,A011,Communications and Engagement,Comms,2026-02-26,Draft site hoarding messages for review,"21.05.2026 - CEL - Delivered and confirmed by the chair.
+16.05.2026 - CEL - Paper submitted to programme board for approval.
+07.05.2026 - CEL - Awaiting supplier response, chased by email.
+12.03.2026 - CEL - Information shared with estates, feedback pending.",CEL,Communications Lead,2026-05-21,Closed,No,No,2026-05-21
+2026-11-02,A012,Enabling Works,Utilities,2026-03-26,Confirm network operator connection date,"10.09.2026 - EWL - Superseded by board decision, no further work needed.
+27.08.2026 - EWL - Revised programme received and under review.
+30.07.2026 - EWL - Application submitted, decision expected next month.
+02.07.2026 - EWL - Revised programme received and under review.
+18.06.2026 - EWL - Cost estimate requested from the quantity surveyor.
+13.06.2026 - EWL - Draft circulated for comment, responses due end of week.
+04.06.2026 - EWL - Paper submitted to programme board for approval.
+21.05.2026 - EWL - Scope confirmed, pricing expected within two weeks.
+09.04.2026 - EWL - Options narrowed to two, recommendation being drafted.",EWL,Enabling Works Lead,2026-09-10,Closed,No,No,2026-09-10
+2026-11-02,A013,Enabling Works,Demolition,2026-03-12,Agree access arrangements with site neighbours,"07.05.2026 - CPM - Delivered and confirmed by the chair.
+26.03.2026 - CPM - Revised programme received and under review.",CPM,Construction Project Manager,2026-03-26,Closed,No,No,2026-05-07
+2026-11-02,A014,Clinical Mobilisation,Workforce,2026-03-12,Draft training needs analysis for new building,"27.08.2026 - CTL - Superseded by board decision, no further work needed.
+30.07.2026 - CTL - Scope confirmed, pricing expected within two weeks.
+10.07.2026 - CTL - Information shared with estates, feedback pending.
+18.06.2026 - CTL - Application submitted, decision expected next month.
+04.06.2026 - CTL - Application submitted, decision expected next month.
+26.03.2026 - CTL - Cost estimate requested from the quantity surveyor.",CTL,Clinical Transition Lead,2026-08-13,Closed,No,No,2026-08-27
+2026-11-02,A015,Estates and Facilities,Sustainability,2026-05-07,Share commissioning plan with estates team,"22.10.2026 - ESL - Paused pending funding decision.
+18.10.2026 - ESL - Revised programme received and under review.
+24.09.2026 - ESL - Information shared with estates, feedback pending.
+10.09.2026 - ESL - Paper submitted to programme board for approval.
+27.08.2026 - ESL - Information shared with estates, feedback pending.
+30.07.2026 - ESL - Restarted following board decision.
+04.06.2026 - ESL - Paused until design freeze is confirmed.
+21.05.2026 - ESL - Workshop held, comments being consolidated.",ESL,Estates Lead,2026-10-08,On hold,No,No,
+2026-11-02,A016,Clinical Mobilisation,Workforce,2026-05-07,Arrange workshop with clinical leads on room layouts,"27.08.2026 - CTL - Superseded by board decision, no further work needed.
+13.08.2026 - CTL - Scope confirmed, pricing expected within two weeks.
+30.07.2026 - CTL - Awaiting supplier response, chased by email.
+16.07.2026 - CTL - Draft circulated for comment, responses due end of week.
+02.07.2026 - CTL - Information shared with estates, feedback pending.
+21.05.2026 - CTL - Paper submitted to programme board for approval.",CTL,Clinical Transition Lead,2026-08-27,Closed,No,No,2026-08-27
+2026-11-02,A017,Communications and Engagement,Comms,2026-05-21,Prepare briefing note for local councillors,"16.07.2026 - CEL - Delivered and confirmed by the chair.
+02.07.2026 - CEL - Options narrowed to two, recommendation being drafted.
+18.06.2026 - CEL - Survey booked, results to come back to the next meeting.
+04.06.2026 - CEL - Information shared with estates, feedback pending.",CEL,Communications Lead,2026-07-16,Closed,No,No,2026-07-16
+2026-11-02,A018,Main Build,Construction,2026-05-21,Agree waste management route with contractor,"18.06.2026 - PD - Superseded by board decision, no further work needed.
+04.06.2026 - PD - Workshop held, comments being consolidated.",PD,Programme Director,2026-06-18,Closed,No,No,2026-06-18
+2026-11-02,A019,Communications and Engagement,Comms,2026-05-21,Update stakeholder map and engagement plan,"16.07.2026 - CEL - Delivered and confirmed by the chair.
+18.06.2026 - CEL - Draft circulated for comment, responses due end of week.",CEL,Communications Lead,2026-07-02,Closed,No,No,2026-07-16
+2026-11-02,A020,Communications and Engagement,Comms,2026-06-04,Draft site hoarding messages for review,"16.07.2026 - CEL - Delivered and confirmed by the chair.
+02.07.2026 - CEL - Survey booked, results to come back to the next meeting.
+18.06.2026 - CEL - Revised programme received and under review.",CEL,Communications Lead,2026-07-16,Closed,No,No,2026-07-16
+2026-11-02,A021,Digital and IT,Cyber,2026-06-04,Share interface specification with EPR supplier,"27.08.2026 - DGL - Delivered and confirmed by the chair.
+13.08.2026 - DGL - Draft circulated for comment, responses due end of week.
+30.07.2026 - DGL - Options narrowed to two, recommendation being drafted.
+02.07.2026 - DGL - Workshop held, comments being consolidated.
+18.06.2026 - DGL - Revised programme received and under review.",DGL,Digital Lead,2026-08-27,Closed,No,No,2026-08-27
+2026-11-02,A022,Estates and Facilities,FM,2026-06-04,Agree planned maintenance schedule for handover,"13.08.2026 - ESL - Delivered and confirmed by the chair.
+30.07.2026 - ESL - Paper submitted to programme board for approval.
+16.07.2026 - ESL - Options narrowed to two, recommendation being drafted.
+02.07.2026 - ESL - Awaiting supplier response, chased by email.",ESL,Estates Lead,2026-08-13,Closed,No,No,2026-08-13
+2026-11-02,A023,Digital and IT,Cyber,2026-06-04,Confirm cyber assurance timeline with supplier,"18.06.2026 - DGL - Complete, evidence saved to the programme library.
+14.06.2026 - DGL - Paper submitted to programme board for approval.",DGL,Digital Lead,2026-06-25,Closed,No,No,2026-06-18
+2026-11-02,A024,Estates and Facilities,FM,2026-06-04,Confirm soft FM tender evaluation panel,"18.06.2026 - ESL - Delivered and confirmed by the chair.
+14.06.2026 - ESL - Options narrowed to two, recommendation being drafted.",ESL,Estates Lead,2026-06-18,Closed,No,No,2026-06-18
+2026-11-02,A025,Finance and Commercial,Commercial,2026-06-18,Review compensation event register with commercial lead,"30.07.2026 - CML - Complete, evidence saved to the programme library.
+16.07.2026 - CML - Survey booked, results to come back to the next meeting.
+02.07.2026 - CML - Survey booked, results to come back to the next meeting.",CML,Commercial Lead,2026-07-30,Closed,No,No,2026-07-30
+2026-11-02,A026,Estates and Facilities,FM,2026-06-18,Confirm soft FM tender evaluation panel,"08.10.2026 - ESL - Delivered and confirmed by the chair.
+24.09.2026 - ESL - Application submitted, decision expected next month.
+10.09.2026 - ESL - Scope confirmed, pricing expected within two weeks.
+27.08.2026 - ESL - Revised programme received and under review.
+16.07.2026 - ESL - Revised programme received and under review.
+02.07.2026 - ESL - Survey booked, results to come back to the next meeting.",ESL,Estates Lead,2026-10-08,Closed,No,No,2026-10-08
+2026-11-02,A027,Main Build,Commissioning,2026-06-18,Agree waste management route with contractor,"10.09.2026 - CPM - Complete, evidence saved to the programme library.
+27.08.2026 - CPM - Options narrowed to two, recommendation being drafted.
+30.07.2026 - CPM - Cost estimate requested from the quantity surveyor.
+16.07.2026 - CPM - Information shared with estates, feedback pending.
+02.07.2026 - CPM - Paper submitted to programme board for approval.",CPM,Construction Project Manager,2026-09-10,Closed,No,No,2026-09-10
+2026-11-02,A028,Clinical Mobilisation,Workforce,2026-06-18,Confirm workforce model for new outpatient service,"22.10.2026 - CTL - Workshop held, comments being consolidated.
+08.10.2026 - CTL - Draft circulated for comment, responses due end of week.
+13.08.2026 - CTL - Paper submitted to programme board for approval.
+30.07.2026 - CTL - Meeting held with contractor, next steps agreed.
+16.07.2026 - CTL - Cost estimate requested from the quantity surveyor.",CTL,Clinical Transition Lead,2026-11-05,In progress,No,No,
+2026-11-02,A029,Digital and IT,Digital,2026-07-02,Confirm cyber assurance timeline with supplier,"30.07.2026 - DGL - Complete, evidence saved to the programme library.
+16.07.2026 - DGL - Options narrowed to two, recommendation being drafted.",DGL,Digital Lead,2026-07-16,Closed,No,No,2026-07-30
+2026-11-02,A030,Finance and Commercial,Finance,2026-07-02,Confirm drawdown profile with finance,"22.10.2026 - FNL - Complete, evidence saved to the programme library.
+08.10.2026 - FNL - Scope confirmed, pricing expected within two weeks.
+04.10.2026 - FNL - Information shared with estates, feedback pending.
+24.09.2026 - FNL - Scope confirmed, pricing expected within two weeks.
+13.08.2026 - FNL - Workshop held, comments being consolidated.
+30.07.2026 - FNL - Draft circulated for comment, responses due end of week.",FNL,Finance Lead,2026-10-22,Closed,No,No,2026-10-22
+2026-11-02,A031,Finance and Commercial,Commercial,2026-07-16,Produce options paper for board on car park phasing,"27.08.2026 - CML - Complete, evidence saved to the programme library.
+13.08.2026 - CML - Paper submitted to programme board for approval.
+30.07.2026 - CML - Options narrowed to two, recommendation being drafted.",CML,Commercial Lead,2026-08-27,Closed,No,No,2026-08-27
+2026-11-02,A032,Communications and Engagement,Comms,2026-07-16,Update stakeholder map and engagement plan,"22.10.2026 - CEL - Delivered and confirmed by the chair.
+08.10.2026 - CEL - Application submitted, decision expected next month.
+02.10.2026 - CEL - Scope confirmed, pricing expected within two weeks.
+24.09.2026 - CEL - Information shared with estates, feedback pending.
+10.09.2026 - CEL - Restarted following board decision.
+30.07.2026 - CEL - Paused until design freeze is confirmed.",CEL,Communications Lead,2026-10-22,Closed,No,No,2026-10-22
+2026-11-02,A033,Enabling Works,Demolition,2026-07-16,Confirm licence application status with highways,"30.07.2026 - CPM - Delivered and confirmed by the chair.
+23.07.2026 - CPM - Scope confirmed, pricing expected within two weeks.",CPM,Construction Project Manager,2026-07-23,Closed,No,No,2026-07-30
+2026-11-02,A034,Main Build,Construction,2026-07-16,Close out design comments on level 3 layouts,"17.10.2026 - CPM - Awaiting supplier response, chased by email.
+24.09.2026 - CPM - Draft circulated for comment, responses due end of week.
+10.09.2026 - CPM - Options narrowed to two, recommendation being drafted.
+27.08.2026 - CPM - Draft circulated for comment, responses due end of week.
+30.07.2026 - CPM - Options narrowed to two, recommendation being drafted.",CPM,Construction Project Manager,2026-10-08,In progress,Yes,No,
+2026-11-02,A035,Enabling Works,Utilities,2026-07-30,Confirm survey scope and issue instruction to consultant,"22.10.2026 - EWL - Survey booked, results to come back to the next meeting.
+08.10.2026 - EWL - Application submitted, decision expected next month.
+01.10.2026 - EWL - Scope confirmed, pricing expected within two weeks.
+24.09.2026 - EWL - Survey booked, results to come back to the next meeting.
+27.08.2026 - EWL - Draft circulated for comment, responses due end of week.",EWL,Enabling Works Lead,2026-11-05,In progress,No,No,
+2026-11-02,A036,Digital and IT,Digital,2026-07-30,Confirm cyber assurance timeline with supplier,"08.10.2026 - DGL - Superseded by board decision, no further work needed.
+24.09.2026 - DGL - Revised programme received and under review.
+10.09.2026 - DGL - Paper submitted to programme board for approval.
+27.08.2026 - DGL - Cost estimate requested from the quantity surveyor.
+13.08.2026 - DGL - Options narrowed to two, recommendation being drafted.",DGL,Digital Lead,2026-10-08,Closed,No,No,2026-10-08
+2026-11-02,A037,Communications and Engagement,Comms,2026-08-13,Prepare briefing note for local councillors,"24.09.2026 - CEL - Complete, evidence saved to the programme library.
+10.09.2026 - CEL - Information shared with estates, feedback pending.
+27.08.2026 - CEL - Workshop held, comments being consolidated.",CEL,Communications Lead,2026-09-24,Closed,No,No,2026-09-24
+2026-11-02,A038,Enabling Works,Site Prep,2026-08-13,Agree access arrangements with site neighbours,"08.10.2026 - EWL - Revised programme received and under review.
+24.09.2026 - EWL - Survey booked, results to come back to the next meeting.
+10.09.2026 - EWL - Scope confirmed, pricing expected within two weeks.
+27.08.2026 - EWL - Information shared with estates, feedback pending.",EWL,Enabling Works Lead,2026-10-22,In progress,Yes,No,
+2026-11-02,A039,Finance and Commercial,Commercial,2026-08-13,Review compensation event register with commercial lead,"22.10.2026 - CML - Superseded by board decision, no further work needed.
+08.10.2026 - CML - Survey booked, results to come back to the next meeting.
+24.09.2026 - CML - Survey booked, results to come back to the next meeting.
+10.09.2026 - CML - Scope confirmed, pricing expected within two weeks.
+27.08.2026 - CML - Meeting held with contractor, next steps agreed.",CML,Commercial Lead,2026-10-22,Closed,No,No,2026-10-22
+2026-11-02,A040,Main Build,Design,2026-08-13,Issue revised programme showing critical path,"24.09.2026 - PD - Complete, evidence saved to the programme library.
+10.09.2026 - PD - Information shared with estates, feedback pending.
+27.08.2026 - PD - Meeting held with contractor, next steps agreed.",PD,Programme Director,2026-09-24,Closed,No,No,2026-09-24
+2026-11-02,A041,Digital and IT,Cyber,2026-08-27,Share interface specification with EPR supplier,"22.10.2026 - DGL - Meeting held with contractor, next steps agreed.
+08.10.2026 - DGL - Awaiting supplier response, chased by email.
+03.10.2026 - DGL - Revised programme received and under review.
+24.09.2026 - DGL - Options narrowed to two, recommendation being drafted.
+10.09.2026 - DGL - Scope confirmed, pricing expected within two weeks.
+05.09.2026 - DGL - Workshop held, comments being consolidated.",DGL,Digital Lead,2026-11-05,In progress,No,No,
+2026-11-02,A042,Digital and IT,Digital,2026-08-27,Provide data migration test results,"24.09.2026 - DGL - Delivered and confirmed by the chair.
+10.09.2026 - DGL - Application submitted, decision expected next month.",DGL,Digital Lead,2026-09-24,Closed,No,No,2026-09-24
+2026-11-02,A043,Estates and Facilities,Sustainability,2026-08-27,Agree planned maintenance schedule for handover,"30.10.2026 - ESL - Cost estimate requested from the quantity surveyor.
+22.10.2026 - ESL - Information shared with estates, feedback pending.
+08.10.2026 - ESL - Draft circulated for comment, responses due end of week.
+03.10.2026 - ESL - Revised programme received and under review.
+24.09.2026 - ESL - Awaiting supplier response, chased by email.
+10.09.2026 - ESL - Options narrowed to two, recommendation being drafted.",ESL,Estates Lead,2026-11-05,In progress,No,No,
+2026-11-02,A044,Main Build,Commissioning,2026-08-27,Provide updated cost estimate for revised layout,"24.09.2026 - PD - Superseded by board decision, no further work needed.
+10.09.2026 - PD - Cost estimate requested from the quantity surveyor.",PD,Programme Director,2026-09-24,Closed,No,No,2026-09-24
+2026-11-02,A045,Finance and Commercial,Finance,2026-08-27,Produce options paper for board on car park phasing,"24.09.2026 - CML - Superseded by board decision, no further work needed.
+10.09.2026 - CML - Options narrowed to two, recommendation being drafted.",CML,Commercial Lead,2026-09-24,Closed,No,No,2026-09-24
+2026-11-02,A046,Clinical Mobilisation,Workforce,2026-09-10,Draft training needs analysis for new building,"22.10.2026 - CTL - Application submitted, decision expected next month.
+08.10.2026 - CTL - Survey booked, results to come back to the next meeting.
+01.10.2026 - CTL - Application submitted, decision expected next month.
+24.09.2026 - CTL - Paper submitted to programme board for approval.",CTL,Clinical Transition Lead,2026-10-22,In progress,Yes,No,
+2026-11-02,A047,Enabling Works,Demolition,2026-09-10,Confirm licence application status with highways,"08.10.2026 - EWL - Information shared with estates, feedback pending.
+24.09.2026 - EWL - Cost estimate requested from the quantity surveyor.",EWL,Enabling Works Lead,2026-10-22,In progress,Yes,No,
+2026-11-02,A048,Main Build,Design,2026-09-10,Agree waste management route with contractor,"16.10.2026 - PD - Scope confirmed, pricing expected within two weeks.",PD,Programme Director,2026-10-01,In progress,Yes,No,
+2026-11-02,A049,Clinical Mobilisation,Workforce,2026-09-24,Arrange workshop with clinical leads on room layouts,"22.10.2026 - CTL - Draft circulated for comment, responses due end of week.",CTL,Clinical Transition Lead,2026-11-05,In progress,No,No,
+2026-11-02,A050,Main Build,Construction,2026-09-24,Issue revised programme showing critical path,"22.10.2026 - PD - Complete, evidence saved to the programme library.
+08.10.2026 - PD - Meeting held with contractor, next steps agreed.",PD,Programme Director,2026-10-22,Closed,No,No,2026-10-22
+2026-11-02,A051,Communications and Engagement,Comms,2026-09-24,Prepare briefing note for local councillors,"22.10.2026 - CEL - Draft circulated for comment, responses due end of week.
+08.10.2026 - CEL - Awaiting supplier response, chased by email.",CEL,Communications Lead,2026-11-05,In progress,No,No,
+2026-11-02,A052,Communications and Engagement,Comms,2026-09-24,Draft site hoarding messages for review,"22.10.2026 - CEL - Survey booked, results to come back to the next meeting.
+17.10.2026 - CEL - Revised programme received and under review.
+08.10.2026 - CEL - Workshop held, comments being consolidated.",CEL,Communications Lead,2026-11-05,In progress,No,No,
+2026-11-02,A053,Enabling Works,Demolition,2026-09-24,Validate asbestos register against demolition plan,"22.10.2026 - EWL - Meeting held with contractor, next steps agreed.",EWL,Enabling Works Lead,2026-11-05,In progress,No,No,
+2026-11-02,A054,Estates and Facilities,Sustainability,2026-10-08,Confirm soft FM tender evaluation panel,,ESL,Estates Lead,2026-10-22,New,Yes,No,
+2026-11-02,A055,Enabling Works,Demolition,2026-10-08,Confirm network operator connection date,22.10.2026 - EWL - Paper submitted to programme board for approval.,EWL,Enabling Works Lead,2026-11-05,In progress,No,No,
+2026-11-02,A056,Communications and Engagement,Comms,2026-10-22,Update stakeholder map and engagement plan,,CEL,Communications Lead,2026-11-05,New,No,No,
+2026-11-02,A057,Finance and Commercial,Commercial,2026-10-22,Confirm drawdown profile with finance,,FNL,Finance Lead,2026-11-05,New,No,No,
+2026-11-02,A058,Finance and Commercial,Finance,2026-10-22,Review compensation event register with commercial lead,,FNL,Finance Lead,2026-11-19,New,No,No,
+2026-11-02,A059,Finance and Commercial,Finance,2026-10-22,Produce options paper for board on car park phasing,,FNL,Finance Lead,2026-11-19,New,No,No,
+2026-11-02,A060,Main Build,Construction,2026-10-22,Circulate draft method statement for review,,PD,Programme Director,2026-11-01,New,Yes,Yes,

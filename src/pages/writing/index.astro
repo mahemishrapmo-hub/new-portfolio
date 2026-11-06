@@ -1,13 +1,8 @@
 ---
-import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import { fmtDate as fmt, getPosts } from '../../lib/content';
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
-
-const fmt = (d: Date) =>
-  d.toLocaleDateString('en-GB', { year: 'numeric', month: 'short', day: '2-digit' });
+const posts = await getPosts();
 ---
 
 <Base title="Writing" description="Notes on programme delivery, PMO practice and data.">
@@ -17,13 +12,14 @@ const fmt = (d: Date) =>
         <span class="ref">WRT</span>
         <h2>Writing</h2>
       </div>
+      <p class="intro">
+        Notes on PMO practice, reporting and data. Also available as
+        <a href="/rss.xml">RSS</a>, together with the case studies.
+      </p>
 
       {
         posts.length === 0 ? (
-          <p class="empty">
-            First post is in final review. It covers building a RAID log
-            dashboard in Power BI for a £1B NHS programme. Check back shortly.
-          </p>
+          <p class="empty">Nothing published yet.</p>
         ) : (
           <div class="list">
             {posts.map((post) => (
@@ -43,10 +39,6 @@ const fmt = (d: Date) =>
 </Base>
 
 <style>
-  .first {
-    border-top: 0;
-  }
-
   .empty {
     color: var(--muted);
     max-width: 38rem;
