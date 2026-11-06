@@ -1,0 +1,94 @@
+---
+import type { CaseEntry } from '../lib/content';
+
+interface Props {
+  item: CaseEntry;
+}
+
+const { item } = Astro.props;
+const { data } = item;
+const lead = data.outcomes[0];
+---
+
+<a class="case" href={`/cases/${item.id}/`}>
+  <span class="meta">
+    <span class="ref">{data.ref}</span>
+    <span class="mono">{data.period}</span>
+  </span>
+  <span class="figure">
+    <span class="value">{lead.value}</span>
+    <span class="label">{lead.label}</span>
+  </span>
+  <span class="text">
+    <h3>{data.title}</h3>
+    <p>{data.summary}</p>
+  </span>
+</a>
+
+<style>
+  .case {
+    display: grid;
+    grid-template-columns: 8rem 14rem 1fr;
+    gap: 1.5rem;
+    padding: 1.6rem 0;
+    border-top: 1px solid var(--line);
+    text-decoration: none;
+    color: inherit;
+    align-items: start;
+  }
+
+  .case:hover h3 {
+    color: var(--accent-ink);
+  }
+
+  .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-top: 0.35rem;
+  }
+
+  .figure {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    border-left: 3px solid var(--accent);
+    padding-left: 0.9rem;
+  }
+
+  .value {
+    font-family: var(--font-display);
+    font-stretch: 112%;
+    font-weight: 800;
+    font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    line-height: 1.45;
+  }
+
+  .text p {
+    margin: 0.5rem 0 0;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 860px) {
+    .case {
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+    }
+
+    .meta {
+      flex-direction: row;
+      gap: 1rem;
+      padding-top: 0;
+    }
+  }
+</style>

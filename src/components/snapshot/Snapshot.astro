@@ -1,0 +1,461 @@
+---
+// Live view of the synthetic Halden Vale programme. Built from
+// src/data/synthetic/snapshot.json, which the weekly GitHub Action rewrites.
+import snap from '../../data/synthetic/snapshot.json';
+import Sparkline from './Sparkline.astro';
+import SegmentBar from './SegmentBar.astro';
+
+interface Props {
+  variant?: 'portfolio' | 'actions' | 'compact';
+}
+
+const { variant = 'portfolio' } = Astro.props;
+
+const day = (iso: string, opts: Intl.DateTimeFormatOptions = { weekday: 'short', day: 'numeric', month: 'short', year: 'numeric' }) =>
+  new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-GB', { ...opts, timeZone: 'UTC' }).replace(',', '');
+const short = (iso: string) => day(iso, { day: 'numeric', month: 'short' });
+const ddmm = (iso: string) => day(iso, { day: '2-digit', month: '2-digit', year: 'numeric' }).replaceAll('/', '.');
+
+const series = (key: 'open_risks' | 'high_exposure_risks' | 'overdue_actions') =>
+  snap.history.map((h) => ({ label: `w/c ${short(h.as_of)}`, value: h[key] }));
+
+// Delta glyph colour follows direction times whether up is good. For all three, up is bad.
+const delta = (n: number) => ({
+  text: n === 0 ? 'No change' : `${n > 0 ? '+' : ''}${n}`,
+  dir: n === 0 ? 'flat' : n > 0 ? 'bad' : 'good',
+  glyph: n === 0 ? '→' : n > 0 ? '▲' : '▼',
+});
+
+const p = snap.portfolio;
+const r = snap.raid;
+const a = snap.actions;
+const variance = `${p.variance_gbp_m >= 0 ? '+' : '−'}£${Math.abs(p.variance_gbp_m).toFixed(1)}m`;
+const trendWord: Record<string, string> = { Up: 'Rising', Down: 'Falling', Flat: 'Stable' };
+const trendGlyph: Record<string, string> = { Up: '▲', Down: '▼', Flat: '→' };
+
+const tiles =
+  variant === 'actions'
+    ? [
+        { label: 'Open actions', value: String(a.open), note: `${a.on_hold} on hold` },
+        { label: 'Overdue', value: String(a.overdue), delta: delta(a.overdue_delta), spark: series('overdue_actions'), unit: 'overdue actions' },
+        { label: 'Due before next meeting', value: String(a.due_before_next_meeting), note: `Meeting ${short(snap.next_meeting)}` },
+        { label: 'Closed to date', value: String(a.closed_total), note: `Over ${snap.weeks_running} weeks` },
+      ]
+    : [
+        { label: 'Open risks', value: String(r.open_by_type.Risk), delta: delta(r.open_risks_delta), spark: series('open_risks'), unit: 'open risks' },
+        { label: 'High exposure', value: String(r.risk_bands.High), delta: delta(r.high_exposure_delta), spark: series('high_exposure_risks'), unit: 'high exposure risks' },
+        { label: 'Overdue actions', value: String(a.overdue), delta: delta(a.overdue_delta), spark: series('overdue_actions'), unit: 'overdue actions' },
+        { label: 'Forecast against budget', value: variance, note: `${p.variance_pct.toFixed(2)}% on £${p.budget_gbp_m.toFixed(0)}m` },
+      ];
+---
+
+<section class:list={['snap', variant]} aria-labelledby={`snap-${variant}`} data-as-of={snap.as_of}>
+  <header class="snap-head">
+    <div>
+      <p class="mono flag">
+        <span class="dot green" data-fresh aria-hidden="true"></span>
+        <span data-fresh-label>Synthetic data, regenerated every Monday</span>
+      </p>
+      <h3 id={`snap-${variant}`}>{snap.programme}</h3>
+      <p class="mono asat">
+        As at {day(snap.as_of)} · Week {snap.weeks_running} · {p.projects} projects
+      </p>
+    </div>
+    <a class="mono how" href="/projects/synthetic-data-engine/">How this is generated</a>
+  </header>
+
+  <div class="tiles">
+    {
+      tiles.map((t) => (
+        <div class="tile">
+          <p class="t-label">{t.label}</p>
+          <p class="t-value">{t.value}</p>
+          <div class="t-foot">
+            {t.delta ? (
+              <span class="t-delta">
+                <span class:list={['glyph', t.delta.dir]} aria-hidden="true">{t.delta.glyph}</span>
+                {t.delta.text} <span class="vs">vs last week</span>
+              </span>
+            ) : (
+              <span class="t-note">{t.note}</span>
+            )}
+            {t.spark && <Sparkline points={t.spark} unit={t.unit} />}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  {
+    variant === 'portfolio' && (
+      <>
+        <div class="bars">
+          <SegmentBar
+            title="Open risks by residual exposure"
+            parts={[
+              { label: 'High, 15 to 25', value: r.risk_bands.High, tone: 'red' },
+              { label: 'Medium, 8 to 14', value: r.risk_bands.Medium, tone: 'amber' },
+              { label: 'Low, 1 to 7', value: r.risk_bands.Low, tone: 'green' },
+            ]}
+          />
+          <SegmentBar
+            title="Projects by delivery confidence"
+            parts={[
+              { label: 'Red', value: p.rag.Red, tone: 'red' },
+              { label: 'Amber', value: p.rag.Amber, tone: 'amber' },
+              { label: 'Green', value: p.rag.Green, tone: 'green' },
+              { label: 'Not started', value: p.not_started, tone: 'neutral' },
+            ]}
+          />
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <caption class="mono">Top five risks by residual score</caption>
+            <thead>
+              <tr>
+                <th scope="col">Ref</th>
+                <th scope="col">Risk</th>
+                <th scope="col" class="hide-sm">Workstream</th>
+                <th scope="col" class="num">Score</th>
+                <th scope="col">Trend</th>
+              </tr>
+            </thead>
+            <tbody>
+              {r.top_risks.map((t) => (
+                <tr>
+                  <td class="ref">{t.id}</td>
+                  <td>{t.title}</td>
+                  <td class="hide-sm muted">{t.workstream}</td>
+                  <td class="num">{t.score}</td>
+                  <td class="trend">
+                    <span class:list={['glyph', t.trend === 'Up' ? 'bad' : t.trend === 'Down' ? 'good' : 'flat']} aria-hidden="true">
+                      {trendGlyph[t.trend]}
+                    </span>
+                    {trendWord[t.trend]}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </>
+    )
+  }
+
+  {
+    variant === 'actions' && (
+      <div class="table-wrap">
+        <table>
+          <caption class="mono">Needs the chair's attention</caption>
+          <thead>
+            <tr>
+              <th scope="col">Ref</th>
+              <th scope="col">Action</th>
+              <th scope="col" class="hide-sm">Owner</th>
+              <th scope="col">Due</th>
+            </tr>
+          </thead>
+          <tbody>
+            {a.attention.map((x) => (
+              <tr>
+                <td class="ref">{x.id}</td>
+                <td>
+                  {x.description}
+                  {x.latest && <span class="latest">{x.latest}</span>}
+                </td>
+                <td class="hide-sm muted">{x.owner_role}</td>
+                <td class="due">
+                  <span class:list={['flagdot', x.flag === 'Overdue' ? 'red' : 'amber']} aria-hidden="true" />
+                  {ddmm(x.due)}
+                  <span class="flagtext">{x.flag}</span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )
+  }
+
+  {
+    variant !== 'compact' && (
+      <p class="files mono">
+        Raw data
+        {snap.files.map((f) => (
+          <a href={`/data/${f}`}>{f}</a>
+        ))}
+      </p>
+    )
+  }
+</section>
+
+<script>
+  // Freshness is judged in the visitor's browser, not at build time. If the weekly
+  // job ever stops, the dot turns amber on its own.
+  document.querySelectorAll<HTMLElement>('.snap[data-as-of]').forEach((el) => {
+    const asOf = new Date(`${el.dataset.asOf}T00:00:00Z`).getTime();
+    const days = Math.floor((Date.now() - asOf) / 86_400_000);
+    if (days > 8) {
+      el.querySelector('[data-fresh]')?.classList.replace('green', 'amber');
+      const label = el.querySelector('[data-fresh-label]');
+      if (label) label.textContent = `Synthetic data, last regenerated ${days} days ago`;
+    } else {
+      el.querySelector('[data-fresh]')?.classList.add('pulse');
+    }
+  });
+</script>
+
+<style>
+  .snap {
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    background: var(--paper-raised);
+    padding: clamp(1.1rem, 3vw, 1.75rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+
+  .snap-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .flag {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .snap-head h3 {
+    font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+  }
+
+  .asat {
+    margin: 0.5rem 0 0;
+    text-transform: none;
+    letter-spacing: 0.03em;
+  }
+
+  .how {
+    text-transform: none;
+    letter-spacing: 0.03em;
+    color: var(--accent-ink);
+  }
+
+  .tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    border-top: 1px solid var(--line);
+  }
+
+  .tile {
+    padding: 1rem 1.1rem 0.25rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .tile + .tile {
+    padding-left: 1.1rem;
+    border-left: 1px solid var(--line);
+  }
+
+  .t-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    margin: 0;
+  }
+
+  .t-value {
+    font-family: var(--font-display);
+    font-stretch: 108%;
+    font-weight: 700;
+    font-size: clamp(1.9rem, 4vw, 2.5rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    margin: 0.15rem 0 0;
+  }
+
+  .t-foot {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    min-height: 36px;
+  }
+
+  .t-delta,
+  .t-note {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--ink);
+    padding-bottom: 0.15rem;
+  }
+
+  .t-note {
+    color: var(--muted);
+  }
+
+  .vs {
+    color: var(--muted);
+  }
+
+  .glyph {
+    font-size: 0.65rem;
+    margin-right: 0.15rem;
+  }
+
+  .glyph.bad {
+    color: var(--status-red);
+  }
+
+  .glyph.good {
+    color: var(--status-green);
+  }
+
+  .glyph.flat {
+    color: var(--muted);
+  }
+
+  .bars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem 2rem;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  caption {
+    text-align: left;
+    margin-bottom: 0.6rem;
+  }
+
+  th {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 400;
+    color: var(--muted);
+    text-align: left;
+    padding: 0.5rem 0.75rem 0.5rem 0;
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  td {
+    padding: 0.6rem 0.75rem 0.6rem 0;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    line-height: 1.4;
+  }
+
+  td.ref {
+    white-space: nowrap;
+  }
+
+  .num {
+    text-align: right;
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .trend,
+  .due {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  .muted {
+    color: var(--muted);
+  }
+
+  .latest {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    margin-top: 0.3rem;
+  }
+
+  .flagdot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 0.4rem;
+  }
+
+  .flagdot.red {
+    background: var(--status-red);
+  }
+
+  .flagdot.amber {
+    background: var(--status-amber);
+  }
+
+  .flagtext {
+    display: block;
+    color: var(--muted);
+    font-size: 0.68rem;
+    margin-top: 0.2rem;
+  }
+
+  .files {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    margin: 0;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .files a {
+    text-transform: none;
+    letter-spacing: 0.02em;
+  }
+
+  @media (max-width: 640px) {
+    .hide-sm {
+      display: none;
+    }
+
+    .tiles {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .tile,
+    .tile + .tile {
+      padding: 0.9rem 0.75rem 0.9rem 0;
+      border-left: 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .tile:nth-child(even) {
+      padding-left: 0.75rem;
+      border-left: 1px solid var(--line);
+    }
+
+    .t-foot {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

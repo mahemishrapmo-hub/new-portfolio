@@ -1,6 +1,14 @@
-# Shortlinks. Update targets, then these work forever.
-/github https://github.com/mahemishrapmo-hub 301
-# TODO uncomment and set your real LinkedIn slug
-# /linkedin https://www.linkedin.com/in/YOUR-SLUG 301
-# TODO uncomment once you drop cv.pdf into public/
-# /cv /cv.pdf 302
+# Shortlinks. Update targets here, then these work forever.
+# Format: /path target status. 301 permanent, 302 temporary.
+/github    https://github.com/mahemishrapmo-hub 301
+/linkedin  https://www.linkedin.com/in/mahe-mishra-31693b267/ 301
+/source    https://github.com/mahemishrapmo-hub/new-portfolio 301
+
+# CV. Served from this domain. Keep in step with cvUrl in src/data/profile.ts.
+/cv        /mahe-mishra-cv.pdf 302
+
+# Feeds and old paths
+/rss       /rss.xml 301
+/feed      /rss.xml 301
+/case-studies   /cases/ 301
+/case-studies/* /cases/:splat 301

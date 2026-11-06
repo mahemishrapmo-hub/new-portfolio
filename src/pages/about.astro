@@ -1,9 +1,15 @@
 ---
 import Base from '../layouts/Base.astro';
 import { profile } from '../data/profile';
+import { credentials } from '../data/experience';
+import { personSchema } from '../lib/schema';
+
+const roadmap = credentials.filter((c) => c.ref.startsWith('CRT'));
+const stateLabel = { done: 'Complete', 'in-progress': 'In progress', planned: 'Planned' } as const;
+const stateDot = { done: 'green', 'in-progress': 'amber', planned: 'amber hollow' } as const;
 ---
 
-<Base title="About" description="About Mahe Mishra.">
+<Base title="About" description={`About ${profile.name}, ${profile.role}.`} jsonLd={personSchema}>
   <section class="section first">
     <div class="wrap">
       <div class="section-head">
@@ -12,32 +18,30 @@ import { profile } from '../data/profile';
       </div>
       <div class="prose">
         <p>
-          I am {profile.name}, a programme support and delivery professional working in NHS
-          capital projects. Right now that means the {profile.programme}, a £1B+
-          redevelopment delivered under an NEC contract, where I sit inside the
-          programme team handling governance, reporting and the connective work
-          between Finance, Communications, Design and Construction, and
-          Mobilisation.
+          I am {profile.name}, a PMO and data analyst working in NHS capital
+          projects. Right now that means the {profile.programme}, a £1B+
+          redevelopment delivered under an NEC contract, where I build the
+          programme's reporting, own its RAID dashboard and run the action
+          tracking that keeps governance moving between Finance, Communications,
+          Design and Construction, and Mobilisation.
         </p>
         <p>
-          My background is a 2:1 degree in Business Management and
-          Economics from the University of Sheffield, and my working style is
-          shaped by data. I build in Python, SQL and Power BI, and my default
-          instinct on any process is to ask whether a machine should be doing
-          the boring half of it. In my previous role that instinct removed a
-          quarter to a third of the time spent on routine reporting.
+          My background is a 2:1 degree in Business Management and Economics
+          from the University of Sheffield, and my working style is shaped by
+          data. I build in Python, SQL and Power BI, and my default instinct on
+          any process is to ask whether a machine should be doing the boring
+          half of it. In my previous role that instinct removed a quarter to a
+          third of the time spent on routine reporting.
         </p>
         <p>
-          I am currently working towards the APM Project Management
-          Qualification. Longer term I am interested in major infrastructure
-          delivery, the kind of programmes measured in years and billions,
-          where good governance and honest reporting are the difference between
-          delivery and drift.
+          Longer term I am interested in major infrastructure delivery, the kind
+          of programmes measured in years and billions, where good governance
+          and honest reporting are the difference between delivery and drift.
         </p>
         <p>
-          Away from work, I cook, Indian, Italian, South-East Asian dishes, play 
-          lots of video games - RDR2 being my favourite, going out with my 
-          friends and intense workouts in the gym.
+          Away from work I cook Indian, Italian and South-East Asian food, play a
+          lot of video games with Red Dead Redemption 2 the favourite, go out
+          with friends, and train hard in the gym.
         </p>
         <p>
           The fastest way to reach me is
@@ -46,10 +50,91 @@ import { profile } from '../data/profile';
       </div>
     </div>
   </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="ref">CRT</span>
+        <h2>Credentials roadmap</h2>
+      </div>
+      <ol class="roadmap">
+        {
+          roadmap.map((c) => (
+            <li class:list={['step', c.state]}>
+              <span class="row">
+                <span class="ref">{c.ref}</span>
+                <span class:list={['dot', stateDot[c.state]]} aria-hidden="true" />
+                <span class="mono">{stateLabel[c.state]}</span>
+              </span>
+              <span class="name">{c.title}</span>
+              <span class="org">{c.org}</span>
+              {c.detail && <span class="detail">{c.detail}</span>}
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
 </Base>
 
 <style>
-  .first {
-    border-top: 0;
+  .roadmap {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    border: 1px solid var(--line);
+    background: var(--paper-raised);
+  }
+
+  .step {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding: 1.2rem;
+    border-right: 1px solid var(--line);
+    position: relative;
+  }
+
+  .step:last-child {
+    border-right: 0;
+  }
+
+  .step.in-progress {
+    box-shadow: inset 0 3px 0 var(--status-amber);
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .name {
+    font-family: var(--font-display);
+    font-stretch: 108%;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-top: 0.3rem;
+  }
+
+  .org,
+  .detail {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.03em;
+  }
+
+  @media (max-width: 900px) {
+    .step {
+      border-right: 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .step:last-child {
+      border-bottom: 0;
+    }
   }
 </style>

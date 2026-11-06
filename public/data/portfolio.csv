@@ -1,0 +1,10 @@
+as_of,project_id,project,workstream,budget_gbp_m,forecast_gbp_m,spend_to_date_gbp_m,variance_gbp_m,start,baseline_finish,forecast_finish,slip_days,percent_complete,rag
+2026-11-02,P01,Site enabling and demolition,Enabling Works,18.40,18.40,14.65,0.00,2025-09-01,2027-01-29,2027-01-29,0,82.9,Green
+2026-11-02,P02,Utilities diversion and substation,Enabling Works,9.20,9.26,6.35,0.06,2025-11-03,2027-03-26,2027-04-23,28,67.9,Green
+2026-11-02,P03,Main hospital block,Main Build,412.00,416.40,61.59,4.40,2026-03-02,2030-06-28,2030-07-26,28,15.2,Green
+2026-11-02,P04,Multi-storey car park,Main Build,24.50,24.93,6.38,0.43,2026-06-01,2028-02-25,2028-03-10,14,23.8,Green
+2026-11-02,P05,Electronic patient record integration,Digital and IT,14.80,14.97,3.28,0.17,2026-01-05,2029-09-28,2029-09-28,0,22.1,Green
+2026-11-02,P06,Network and infrastructure fit-out,Digital and IT,6.30,6.30,0.00,0.00,2027-04-05,2030-03-29,2030-03-29,0,0.0,Not started
+2026-11-02,P07,Clinical service transition planning,Clinical Mobilisation,3.10,3.29,0.49,0.19,2026-02-02,2030-09-27,2030-10-04,7,16.0,Red
+2026-11-02,P08,Soft FM procurement,Estates and Facilities,1.20,1.20,0.41,0.00,2026-04-06,2027-10-29,2027-12-24,56,33.5,Amber
+2026-11-02,P09,Stakeholder engagement programme,Communications and Engagement,0.60,0.60,0.06,0.00,2025-10-06,2030-12-20,2031-01-03,14,20.5,Green
