@@ -14,6 +14,8 @@ export const profile = {
   location: 'South Yorkshire, UK',
 
   email: 'mahe@mahemishra.co.uk',
+  phone: '+44 7393 107755',
+  phoneHref: 'tel:+447393107755',
 
   github: 'https://github.com/mahemishrapmo-hub',
   repo: 'https://github.com/mahemishrapmo-hub/new-portfolio',

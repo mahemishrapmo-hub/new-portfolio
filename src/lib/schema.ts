@@ -12,6 +12,7 @@ export const personSchema = {
   jobTitle: profile.role,
   url: `${site}/`,
   email: `mailto:${profile.email}`,
+  telephone: profile.phone,
   image: `${site}/og/index.png`,
   worksFor: { '@type': 'Organization', name: profile.org },
   alumniOf: { '@type': 'CollegeOrUniversity', name: profile.alumniOf },
