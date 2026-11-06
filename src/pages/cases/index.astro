@@ -1,0 +1,32 @@
+---
+import Base from '../../layouts/Base.astro';
+import CaseCard from '../../components/CaseCard.astro';
+import { getCases } from '../../lib/content';
+
+const cases = await getCases();
+---
+
+<Base title="Case studies" description="Case studies by Mahe Mishra. Context, approach and a measured outcome for each.">
+  <section class="section first">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="ref">CS</span>
+        <h2>Case studies</h2>
+      </div>
+      <p class="intro">
+        Projects show what was built. Case studies show why, what changed, and
+        what it was worth. Each one is written from the outcome backwards, with
+        no programme data.
+      </p>
+      <div class="list">
+        {cases.map((c) => <CaseCard item={c} />)}
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .list {
+    border-bottom: 1px solid var(--line);
+  }
+</style>

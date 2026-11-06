@@ -1,0 +1,81 @@
+---
+// Twelve-week trend for a stat tile. One series, so no legend, the tile label names it.
+// Line in the de-emphasis colour, current week in the accent. Each week has a hit
+// target larger than the mark with a native tooltip.
+interface Props {
+  points: { label: string; value: number }[];
+  unit: string;
+}
+
+const { points, unit } = Astro.props;
+const w = 132;
+const h = 36;
+const pad = 5;
+const values = points.map((p) => p.value);
+const min = Math.min(...values);
+const max = Math.max(...values);
+const span = max - min || 1;
+const x = (i: number) => pad + (i * (w - pad * 2)) / Math.max(1, points.length - 1);
+const y = (v: number) => h - pad - ((v - min) / span) * (h - pad * 2);
+const path = points.map((p, i) => `${i === 0 ? 'M' : 'L'}${x(i).toFixed(1)},${y(p.value).toFixed(1)}`).join(' ');
+const last = points.length - 1;
+const first = points[0];
+const end = points[last];
+---
+
+<svg
+  class="spark"
+  viewBox={`0 0 ${w} ${h}`}
+  width={w}
+  height={h}
+  role="img"
+  aria-label={`${unit} over the last ${points.length} weeks, from ${first.value} to ${end.value}`}
+>
+  <path d={path} fill="none" class="line" />
+  {
+    points.map((p, i) => (
+      <g class="pt">
+        <circle cx={x(i)} cy={y(p.value)} r="8" class="hit" />
+        <circle cx={x(i)} cy={y(p.value)} r="3" class="hover-dot" />
+        <title>{`${p.label}: ${p.value} ${unit}`}</title>
+      </g>
+    ))
+  }
+  <circle cx={x(last)} cy={y(end.value)} r="4" class="end" />
+</svg>
+
+<style>
+  .spark {
+    display: block;
+    overflow: visible;
+  }
+
+  .line {
+    stroke: var(--muted);
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    opacity: 0.55;
+  }
+
+  .end {
+    fill: var(--accent);
+    stroke: var(--paper-raised);
+    stroke-width: 2;
+    pointer-events: none;
+  }
+
+  .hit {
+    fill: transparent;
+  }
+
+  .hover-dot {
+    fill: var(--ink);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .pt:hover .hover-dot {
+    opacity: 1;
+  }
+</style>

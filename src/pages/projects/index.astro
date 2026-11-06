@@ -1,0 +1,163 @@
+---
+import Base from '../../layouts/Base.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getProjects, tagCounts } from '../../lib/content';
+
+const projects = await getProjects();
+const tags = tagCounts(projects);
+---
+
+<Base title="Projects" description="Dashboards, trackers and automation by Mahe Mishra, PMO and Data Analyst.">
+  <section class="section first">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="ref">PRJ</span>
+        <h2>Projects</h2>
+      </div>
+      <p class="intro">
+        Work I can show. Anything built inside a live programme is represented
+        here through synthetic data or method only. Every project states where
+        its data comes from.
+      </p>
+
+      <div class="filters" role="group" aria-label="Filter projects by tag">
+        <button class="filter active" data-tag="all" type="button" aria-pressed="true">
+          All <span class="n">{projects.length}</span>
+        </button>
+        {
+          tags.map(([t, n]) => (
+            <button class="filter" data-tag={t} type="button" aria-pressed="false">
+              {t} <span class="n">{n}</span>
+            </button>
+          ))
+        }
+      </div>
+      <p class="mono shown" aria-live="polite" id="shown">Showing {projects.length} of {projects.length}</p>
+
+      <div class="grid" id="project-grid">
+        {projects.map((p) => <ProjectCard project={p} />)}
+      </div>
+
+      <dl class="key mono">
+        <div><dt><span class="dot green" aria-hidden="true"></span> Live or shipped</dt><dd>Exists and works</dd></div>
+        <div><dt><span class="dot amber" aria-hidden="true"></span> In progress</dt><dd>Being built now</dd></div>
+        <div><dt><span class="dot amber hollow" aria-hidden="true"></span> Awaiting data</dt><dd>Ready, waiting on someone else</dd></div>
+      </dl>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .filter {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    padding: 0.4rem 0.85rem;
+    cursor: pointer;
+  }
+
+  .filter .n {
+    opacity: 0.7;
+    margin-left: 0.2rem;
+  }
+
+  .filter:hover {
+    border-color: var(--line-strong);
+    color: var(--ink);
+  }
+
+  .filter.active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+  }
+
+  .shown {
+    margin-bottom: 1.25rem;
+    text-transform: none;
+    letter-spacing: 0.03em;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
+  .key {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 2rem;
+    margin: 2.5rem 0 0;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+    text-transform: none;
+    letter-spacing: 0.03em;
+  }
+
+  .key div {
+    display: flex;
+    gap: 0.6rem;
+  }
+
+  .key dt {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: var(--ink);
+  }
+
+  .key dd {
+    margin: 0;
+  }
+
+  @media (max-width: 420px) {
+    .grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // Filters sync to ?tag= so a filtered view can be sent as a link.
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('.filter')];
+  const cards = [...document.querySelectorAll<HTMLElement>('#project-grid .card')];
+  const shown = document.getElementById('shown');
+
+  function apply(tag: string, push: boolean) {
+    const valid = buttons.some((b) => b.dataset.tag === tag) ? tag : 'all';
+    let count = 0;
+    buttons.forEach((b) => {
+      const on = b.dataset.tag === valid;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', String(on));
+    });
+    cards.forEach((card) => {
+      const match = valid === 'all' || (card.dataset.tags ?? '').split('|').includes(valid);
+      card.style.display = match ? '' : 'none';
+      if (match) count += 1;
+    });
+    if (shown) shown.textContent = `Showing ${count} of ${cards.length}${valid === 'all' ? '' : `, tagged ${valid}`}`;
+    if (push) {
+      const url = new URL(location.href);
+      if (valid === 'all') url.searchParams.delete('tag');
+      else url.searchParams.set('tag', valid);
+      history.replaceState(null, '', url);
+    }
+  }
+
+  buttons.forEach((b) => b.addEventListener('click', () => apply(b.dataset.tag ?? 'all', true)));
+  const initial = new URLSearchParams(location.search).get('tag');
+  if (initial) apply(initial, false);
+</script>
