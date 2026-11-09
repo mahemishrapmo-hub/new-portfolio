@@ -1,10 +1,10 @@
 {
   "programme": "Halden Vale Health Campus Programme",
-  "as_of": "2026-11-02",
-  "iso_week": 45,
-  "weeks_running": 26,
-  "last_meeting": "2026-10-22",
-  "next_meeting": "2026-11-05",
+  "as_of": "2026-11-09",
+  "iso_week": 46,
+  "weeks_running": 27,
+  "last_meeting": "2026-11-05",
+  "next_meeting": "2026-11-19",
   "portfolio": {
     "projects": 9,
     "budget_gbp_m": 490.1,
@@ -20,19 +20,19 @@
   },
   "raid": {
     "open_by_type": {
-      "Risk": 43,
+      "Risk": 44,
       "Issue": 4,
       "Assumption": 7,
       "Dependency": 3
     },
     "risk_bands": {
-      "High": 10,
+      "High": 11,
       "Medium": 18,
       "Low": 15
     },
-    "reviews_overdue": 2,
-    "raised_this_week": 2,
-    "closed_this_week": 1,
+    "reviews_overdue": 3,
+    "raised_this_week": 1,
+    "closed_this_week": 0,
     "open_risks_delta": 1,
     "high_exposure_delta": 1,
     "top_risks": [
@@ -41,7 +41,7 @@
         "workstream": "Finance and Commercial",
         "title": "Funding drawdown profile misaligned with spend",
         "score": 25,
-        "trend": "Up",
+        "trend": "Flat",
         "owner_role": "Commercial Lead"
       },
       {
@@ -79,82 +79,76 @@
     ]
   },
   "actions": {
-    "open": 20,
-    "on_hold": 1,
-    "overdue": 7,
-    "overdue_delta": 1,
-    "closed_total": 39,
+    "open": 18,
+    "on_hold": 0,
+    "overdue": 6,
+    "overdue_delta": -1,
+    "closed_total": 44,
     "due_before_next_meeting": 1,
     "attention": [
       {
-        "id": "A048",
-        "workstream": "Main Build",
-        "description": "Agree waste management route with contractor",
-        "owner_role": "Programme Director",
-        "due": "2026-10-01",
-        "status": "In progress",
-        "flag": "Overdue",
-        "latest": "16.10.2026 - PD - Scope confirmed, pricing expected within two weeks."
-      },
-      {
-        "id": "A034",
-        "workstream": "Main Build",
-        "description": "Close out design comments on level 3 layouts",
-        "owner_role": "Construction Project Manager",
+        "id": "A015",
+        "workstream": "Estates and Facilities",
+        "description": "Share commissioning plan with estates team",
+        "owner_role": "Estates Lead",
         "due": "2026-10-08",
         "status": "In progress",
         "flag": "Overdue",
-        "latest": "17.10.2026 - CPM - Awaiting supplier response, chased by email."
+        "latest": "05.11.2026 - ESL - Restarted following board decision."
       },
       {
-        "id": "A038",
-        "workstream": "Enabling Works",
-        "description": "Agree access arrangements with site neighbours",
-        "owner_role": "Enabling Works Lead",
-        "due": "2026-10-22",
-        "status": "In progress",
-        "flag": "Overdue",
-        "latest": "08.10.2026 - EWL - Revised programme received and under review."
-      },
-      {
-        "id": "A046",
+        "id": "A028",
         "workstream": "Clinical Mobilisation",
-        "description": "Draft training needs analysis for new building",
+        "description": "Confirm workforce model for new outpatient service",
         "owner_role": "Clinical Transition Lead",
-        "due": "2026-10-22",
+        "due": "2026-11-05",
         "status": "In progress",
         "flag": "Overdue",
-        "latest": "22.10.2026 - CTL - Application submitted, decision expected next month."
+        "latest": "05.11.2026 - CTL - Paper submitted to programme board for approval."
       },
       {
-        "id": "A047",
-        "workstream": "Enabling Works",
-        "description": "Confirm licence application status with highways",
-        "owner_role": "Enabling Works Lead",
-        "due": "2026-10-22",
+        "id": "A041",
+        "workstream": "Digital and IT",
+        "description": "Share interface specification with EPR supplier",
+        "owner_role": "Digital Lead",
+        "due": "2026-11-05",
         "status": "In progress",
         "flag": "Overdue",
-        "latest": "08.10.2026 - EWL - Information shared with estates, feedback pending."
+        "latest": "05.11.2026 - DGL - Revised programme received and under review."
       },
       {
-        "id": "A054",
-        "workstream": "Estates and Facilities",
-        "description": "Confirm soft FM tender evaluation panel",
-        "owner_role": "Estates Lead",
-        "due": "2026-10-22",
-        "status": "New",
+        "id": "A051",
+        "workstream": "Communications and Engagement",
+        "description": "Prepare briefing note for local councillors",
+        "owner_role": "Communications Lead",
+        "due": "2026-11-05",
+        "status": "In progress",
         "flag": "Overdue",
-        "latest": ""
+        "latest": "22.10.2026 - CEL - Draft circulated for comment, responses due end of week."
+      },
+      {
+        "id": "A052",
+        "workstream": "Communications and Engagement",
+        "description": "Draft site hoarding messages for review",
+        "owner_role": "Communications Lead",
+        "due": "2026-11-05",
+        "status": "In progress",
+        "flag": "Overdue",
+        "latest": "22.10.2026 - CEL - Survey booked, results to come back to the next meeting."
+      },
+      {
+        "id": "A057",
+        "workstream": "Finance and Commercial",
+        "description": "Confirm drawdown profile with finance",
+        "owner_role": "Finance Lead",
+        "due": "2026-11-05",
+        "status": "In progress",
+        "flag": "Overdue",
+        "latest": "05.11.2026 - FNL - Workshop held, comments being consolidated."
       }
     ]
   },
   "history": [
-    {
-      "as_of": "2026-08-17",
-      "open_risks": 36,
-      "high_exposure_risks": 7,
-      "overdue_actions": 9
-    },
     {
       "as_of": "2026-08-24",
       "open_risks": 36,
@@ -220,6 +214,12 @@
       "open_risks": 43,
       "high_exposure_risks": 10,
       "overdue_actions": 7
+    },
+    {
+      "as_of": "2026-11-09",
+      "open_risks": 44,
+      "high_exposure_risks": 11,
+      "overdue_actions": 6
     }
   ],
   "files": [
