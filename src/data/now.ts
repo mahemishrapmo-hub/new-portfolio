@@ -1,13 +1,14 @@
 // The /now page. Review it monthly. The page shows how long ago this date was,
 // and the dot turns amber after 45 days, so a stale page is obvious to you and to visitors.
 export const now = {
-  reviewed: '2026-11-04',
+  reviewed: '2026-11-13',
   sections: [
     {
       ref: 'NOW-01',
       heading: 'At work',
       items: [
-        'Building version 2 of the RAID dashboard on the Hinchingbrooke programme. Live from SharePoint, five pages, board-safe views and a meeting brief written in DAX.',
+        'Version 3 of the RAID dashboard on the Hinchingbrooke programme is built. Three pages, Current Position, RAID Meeting and Issues, on an export of the RAID log while the live SharePoint feed is set up.',
+        'Redesigning the enabling works project report into a metrics-led template with the workstream chair. Second iteration in progress ahead of a trial.',
         'Running the fortnightly action tracker for the enabling works governance group.',
       ],
     },

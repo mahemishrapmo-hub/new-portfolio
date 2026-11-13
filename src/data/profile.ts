@@ -13,7 +13,7 @@ export const profile = {
 
   location: 'South Yorkshire, UK',
 
-  email: 'mahe@mahemishra.co.uk',
+  email: 'mahaswar.mishra@gmail.com',
   phone: '+44 7393 107755',
   phoneHref: 'tel:+447393107755',
 

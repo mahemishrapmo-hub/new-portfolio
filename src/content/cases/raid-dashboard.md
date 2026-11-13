@@ -33,7 +33,7 @@ A flat list answers "what risks do we have". A Programme Board asks different qu
 
 ## Outcome
 
-The Deputy Head of PMO endorsed the prototype and it was taken forward, with named ownership of RAID reporting written into the PMO operating model. Version 2 is now in build, reading the RAID log live from SharePoint, adding board-safe views and a meeting brief written by DAX from the live numbers.
+The Deputy Head of PMO endorsed the prototype and it was taken forward, with named ownership of RAID reporting written into the PMO operating model. Version 3 is now built, three pages covering the current position, the RAID review meeting and issues, with a takeaway line on each page written in DAX from the live numbers. It runs on an export of the RAID log for now, with the live SharePoint connection as the next phase.
 
 ## Lesson
 

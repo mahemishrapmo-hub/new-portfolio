@@ -16,7 +16,7 @@ export const roles: Role[] = [
     current: true,
     points: [
       'Reporting and analysis for the £1B+ Hinchingbrooke Hospital Redevelopment Programme, an NEC contract delivered with Kier Construction.',
-      'Built the programme’s Power BI RAID dashboard, with DAX measures for risk exposure, mitigation trajectories and workstream views. Endorsed by the Deputy Head of PMO and now owned by me in the PMO operating model. Version 2, reading the RAID log live from SharePoint, is in build.',
+      'Built the programme’s Power BI RAID dashboard, with DAX measures for risk exposure, mitigation trajectories and workstream views. Endorsed by the Deputy Head of PMO and now owned by me in the PMO operating model. Version 3 is built on three pages, with a live SharePoint feed as the next phase.',
       'Run the fortnightly action tracker for the enabling works governance group, turning each meeting into chair-ready updates with a dated audit trail on every action.',
       'Portfolio KPI reporting across workstreams, tracking milestones, dependencies and critical path items, and escalating variance to Programme Managers and the Deputy Programme Director.',
       'Expenditure of £1,000 to £350,000 per transaction through NHS SBS on Oracle Cloud ERP, with variance analysis against budget lines and anomalies escalated to Finance.',
