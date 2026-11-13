@@ -27,7 +27,7 @@ export const profile = {
   cvUrl: '/mahe-mishra-cv.pdf',
 
   // These power the live counters in the hero status row.
-  currentRoleStart: '2025-01-01',
+  currentRoleStart: '2026-07-01',
   nhsCareerStart: '2024-01-01',
 
   // Fed into structured data so search engines can describe the person behind the site.

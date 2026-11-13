@@ -3,7 +3,7 @@ ref: CS-03
 title: Workforce data automation and £280k of validated savings
 summary: Routine HealthRoster reporting was eating time and introducing rekeying errors. Python automation cut 25 to 30 percent of the workload, and workforce analysis for the Trust's Cost Improvement Programme delivered £280k of validated savings.
 order: 3
-role: Workforce Consultant
+role: PMO Coordinator
 period: '2024 to 2025'
 pubDate: 2026-11-04
 tags: ['Python', 'Automation', 'NHS']
@@ -19,7 +19,7 @@ outcomes:
 
 ## Context
 
-My first role at North West Anglia NHS Foundation Trust was in workforce information, working with HealthRoster data covering 200 to 250 staff and producing management information for service leads and senior managers.
+Early in my time at North West Anglia NHS Foundation Trust I worked on workforce information, with HealthRoster data covering 200 to 250 staff and producing management information for service leads and senior managers.
 
 ## Problem
 

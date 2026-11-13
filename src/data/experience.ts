@@ -10,9 +10,9 @@ export type Role = {
 export const roles: Role[] = [
   {
     ref: 'EXP-01',
-    title: 'PMO and Data Analyst',
+    title: 'PMO Analyst',
     org: 'North West Anglia NHS Foundation Trust',
-    period: '2025 to present',
+    period: 'July 2026 to present',
     current: true,
     points: [
       'Reporting and analysis for the £1B+ Hinchingbrooke Hospital Redevelopment Programme, an NEC contract delivered with Kier Construction.',
@@ -25,11 +25,13 @@ export const roles: Role[] = [
   },
   {
     ref: 'EXP-02',
-    title: 'Workforce Consultant',
+    title: 'PMO Coordinator',
     org: 'North West Anglia NHS Foundation Trust',
-    period: '2024 to 2025',
+    period: 'Jan 2024 to July 2026',
     current: false,
     points: [
+      'PMO point of contact for the New Main Theatres project at Hinchingbrooke Hospital, coordinating reporting, RAID and actions across 5+ workstream leads for the Senior Responsible Officer and Project Director.',
+      'Produced the monthly Project Board and Project Team packs from workstream lead reports, and owned the project action tracker of 20+ actions.',
       'HealthRoster workforce data for 200 to 250 staff, analysing rostering, capacity and leave patterns to inform workforce planning.',
       'Built Python automation across HealthRoster data operations, delivering a 25 to 30 percent workflow efficiency gain and removing manual processing errors.',
       'Workforce data analysis for the Trust’s Cost Improvement Programme, delivering £280k of validated savings.',

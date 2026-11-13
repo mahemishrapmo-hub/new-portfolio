@@ -3,7 +3,7 @@ ref: CS-04
 title: Redesigning project reporting for an NHS enabling works programme
 summary: Each enabling works project reported fortnightly on two narrative slides, so nobody could see at a glance whether a project was safe, on budget or on time. A metrics-led template, drafted with the workstream chair, puts health and safety, finance, programme, change control and risk on the page.
 order: 4
-role: PMO and Data Analyst
+role: PMO Analyst
 period: '2026'
 pubDate: 2026-11-13
 tags: ['PMO', 'Reporting design', 'Risk management', 'PowerPoint', 'Power BI']

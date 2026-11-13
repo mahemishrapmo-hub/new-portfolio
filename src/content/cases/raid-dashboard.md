@@ -3,8 +3,8 @@ ref: CS-01
 title: Replacing a static RAID spreadsheet with a dashboard a board can interrogate
 summary: A £1B+ redevelopment programme's RAID log could list risks but could not say what had changed. A Power BI prototype on dummy data was endorsed, taken forward, and earned named ownership of RAID reporting.
 order: 1
-role: PMO and Data Analyst
-period: '2025 to 2026'
+role: PMO Analyst
+period: '2026'
 pubDate: 2026-11-04
 tags: ['Power BI', 'DAX', 'PMO']
 project: raid-dashboard

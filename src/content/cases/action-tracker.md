@@ -3,7 +3,7 @@ ref: CS-02
 title: A governance tracker that carries its own audit trail
 summary: A fortnightly governance group needed an action tracker the chair could trust without re-reading the meeting. A small set of hard rules did more than any formula.
 order: 2
-role: PMO and Data Analyst
+role: PMO Analyst
 period: '2026'
 pubDate: 2026-11-04
 tags: ['Excel', 'PMO', 'Governance']
