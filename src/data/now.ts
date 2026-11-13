@@ -8,7 +8,7 @@ export const now = {
       heading: 'At work',
       items: [
         'Version 3 of the RAID dashboard on the Hinchingbrooke programme is built. Three pages, Current Position, RAID Meeting and Issues, on an export of the RAID log while the live SharePoint feed is set up.',
-        'Redesigning the enabling works project report into a metrics-led template with the workstream chair. Second iteration in progress ahead of a trial.',
+        'Enabling works project reporting, redesigned with the workstream chair into a metrics-led template.',
         'Running the fortnightly action tracker for the enabling works governance group.',
       ],
     },
@@ -24,7 +24,7 @@ export const now = {
     {
       ref: 'NOW-03',
       heading: 'Studying',
-      items: ['APM Project Management Qualification. PL-300 is next.'],
+      items: ['APM Project Management Qualification, PL-300 and DP-600.'],
     },
     {
       ref: 'NOW-04',

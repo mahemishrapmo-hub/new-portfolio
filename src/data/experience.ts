@@ -17,7 +17,7 @@ export const roles: Role[] = [
     points: [
       'Designed, built and own the HHRP portfolio RAID dashboard in Power BI with 19 custom DAX and Power Query KPIs, consolidating 230+ risks, issues and dependencies across 8+ workstreams, replacing manual Excel consolidation and cutting the PMO reporting cycle from 2 to 3 days to under 30 minutes.',
       'Own the fortnightly PMO reporting cycle feeding the Deputy Programme Director and external governance chairs, producing the portfolio pack covering milestone slippage, benefits realisation, interdependencies and critical path variance across 30+ active programme activities on a £1B+ capital programme.',
-      'Redesigned enabling works project reporting with the workstream chair, replacing narrative two-slide updates across 12 projects with a metrics-led template covering health and safety, finance, contingency, programme movement, change control and decision logging, plus a risk page per project.',
+      'Redesigned enabling works project reporting with the workstream chair, replacing narrative two-slide updates across 11 projects with a metrics-led template covering health and safety, finance, contingency, programme movement, change control and decision logging, plus a risk page per project.',
       'Lead PMO support for the Enabling Works Development Group (EWDG), owning fortnightly action tracker production, external chair review cycles and senior stakeholder circulation across the Trust and external partners.',
       'Operate PMO financial controls across 150+ purchase orders ranging £1k to £4.2m in Oracle Cloud ERP, tracking cost variance, flagging anomalies and producing forecast exposure reporting that surfaced reforecast risk to Finance ahead of month-end.',
       'Shape PMO reporting standards and data governance across the programme, consolidating 5+ workstream data sources into a single reporting layer, removing 10+ hours of manual reconciliation per cycle and improving portfolio data quality for Programme Board decision-making.',
@@ -75,15 +75,15 @@ export const credentials: Credential[] = [
     ref: 'CRT-02',
     title: 'PL-300 Power BI Data Analyst Associate',
     org: 'Microsoft',
-    detail: 'Next, after the PMQ.',
-    state: 'planned',
+    detail: '',
+    state: 'in-progress',
   },
   {
     ref: 'CRT-03',
     title: 'DP-600 Fabric Analytics Engineer Associate',
     org: 'Microsoft',
-    detail: 'Planned, after PL-300.',
-    state: 'planned',
+    detail: '',
+    state: 'in-progress',
   },
   {
     ref: 'CRT-04',
