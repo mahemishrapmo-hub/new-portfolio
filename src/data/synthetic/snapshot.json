@@ -1,16 +1,16 @@
 {
   "programme": "Halden Vale Health Campus Programme",
-  "as_of": "2026-11-09",
-  "iso_week": 46,
-  "weeks_running": 27,
+  "as_of": "2026-11-16",
+  "iso_week": 47,
+  "weeks_running": 28,
   "last_meeting": "2026-11-05",
   "next_meeting": "2026-11-19",
   "portfolio": {
     "projects": 9,
     "budget_gbp_m": 490.1,
-    "forecast_gbp_m": 495.3,
-    "variance_gbp_m": 5.2,
-    "variance_pct": 1.07,
+    "forecast_gbp_m": 495.5,
+    "variance_gbp_m": 5.4,
+    "variance_pct": 1.11,
     "rag": {
       "Green": 6,
       "Amber": 1,
@@ -20,30 +20,22 @@
   },
   "raid": {
     "open_by_type": {
-      "Risk": 44,
-      "Issue": 4,
+      "Risk": 45,
+      "Issue": 3,
       "Assumption": 7,
-      "Dependency": 3
+      "Dependency": 2
     },
     "risk_bands": {
       "High": 11,
-      "Medium": 18,
+      "Medium": 19,
       "Low": 15
     },
-    "reviews_overdue": 3,
+    "reviews_overdue": 5,
     "raised_this_week": 1,
-    "closed_this_week": 0,
+    "closed_this_week": 2,
     "open_risks_delta": 1,
-    "high_exposure_delta": 1,
+    "high_exposure_delta": 0,
     "top_risks": [
-      {
-        "id": "R-011",
-        "workstream": "Finance and Commercial",
-        "title": "Funding drawdown profile misaligned with spend",
-        "score": 25,
-        "trend": "Flat",
-        "owner_role": "Commercial Lead"
-      },
       {
         "id": "R-051",
         "workstream": "Digital and IT",
@@ -61,6 +53,14 @@
         "owner_role": "Digital Lead"
       },
       {
+        "id": "R-011",
+        "workstream": "Finance and Commercial",
+        "title": "Funding drawdown profile misaligned with spend",
+        "score": 20,
+        "trend": "Down",
+        "owner_role": "Commercial Lead"
+      },
+      {
         "id": "R-045",
         "workstream": "Clinical Mobilisation",
         "title": "Training plan for new building not resourced",
@@ -69,9 +69,9 @@
         "owner_role": "Clinical Transition Lead"
       },
       {
-        "id": "R-047",
-        "workstream": "Enabling Works",
-        "title": "Decant accommodation not ready before demolition",
+        "id": "R-061",
+        "workstream": "Main Build",
+        "title": "Design freeze slips due to late clinical change requests (fit-out)",
         "score": 20,
         "trend": "Flat",
         "owner_role": "Construction Project Manager"
@@ -81,8 +81,8 @@
   "actions": {
     "open": 18,
     "on_hold": 0,
-    "overdue": 6,
-    "overdue_delta": -1,
+    "overdue": 7,
+    "overdue_delta": 1,
     "closed_total": 44,
     "due_before_next_meeting": 1,
     "attention": [
@@ -150,12 +150,6 @@
   },
   "history": [
     {
-      "as_of": "2026-08-24",
-      "open_risks": 36,
-      "high_exposure_risks": 8,
-      "overdue_actions": 12
-    },
-    {
       "as_of": "2026-08-31",
       "open_risks": 38,
       "high_exposure_risks": 7,
@@ -220,6 +214,12 @@
       "open_risks": 44,
       "high_exposure_risks": 11,
       "overdue_actions": 6
+    },
+    {
+      "as_of": "2026-11-16",
+      "open_risks": 45,
+      "high_exposure_risks": 11,
+      "overdue_actions": 7
     }
   ],
   "files": [
