@@ -1,10 +1,10 @@
 as_of,project_id,project,workstream,budget_gbp_m,forecast_gbp_m,spend_to_date_gbp_m,variance_gbp_m,start,baseline_finish,forecast_finish,slip_days,percent_complete,rag
-2026-11-16,P01,Site enabling and demolition,Enabling Works,18.40,18.57,15.14,0.17,2025-09-01,2027-01-29,2027-01-29,0,85.6,Green
-2026-11-16,P02,Utilities diversion and substation,Enabling Works,9.20,9.26,6.56,0.06,2025-11-03,2027-03-26,2027-04-23,28,70.5,Green
-2026-11-16,P03,Main hospital block,Main Build,412.00,416.40,65.05,4.40,2026-03-02,2030-06-28,2030-07-26,28,16.1,Green
-2026-11-16,P04,Multi-storey car park,Main Build,24.50,24.93,6.92,0.43,2026-06-01,2028-02-25,2028-03-10,14,25.9,Green
-2026-11-16,P05,Electronic patient record integration,Digital and IT,14.80,14.97,3.44,0.17,2026-01-05,2029-09-28,2029-10-19,21,22.8,Green
-2026-11-16,P06,Network and infrastructure fit-out,Digital and IT,6.30,6.30,0.00,0.00,2027-04-05,2030-03-29,2030-03-29,0,0.0,Not started
-2026-11-16,P07,Clinical service transition planning,Clinical Mobilisation,3.10,3.29,0.52,0.19,2026-02-02,2030-09-27,2030-10-04,7,16.8,Red
-2026-11-16,P08,Soft FM procurement,Estates and Facilities,1.20,1.20,0.44,0.00,2026-04-06,2027-10-29,2027-12-24,56,35.7,Amber
-2026-11-16,P09,Stakeholder engagement programme,Communications and Engagement,0.60,0.60,0.06,0.00,2025-10-06,2030-12-20,2031-01-03,14,21.2,Green
+2026-11-23,P01,Site enabling and demolition,Enabling Works,18.40,18.57,15.37,0.17,2025-09-01,2027-01-29,2027-01-29,0,87.0,Green
+2026-11-23,P02,Utilities diversion and substation,Enabling Works,9.20,9.26,6.66,0.06,2025-11-03,2027-03-26,2027-04-23,28,71.8,Green
+2026-11-23,P03,Main hospital block,Main Build,412.00,416.40,66.70,4.40,2026-03-02,2030-06-28,2030-07-26,28,16.6,Green
+2026-11-23,P04,Multi-storey car park,Main Build,24.50,24.93,7.18,0.43,2026-06-01,2028-02-25,2028-03-10,14,27.0,Green
+2026-11-23,P05,Electronic patient record integration,Digital and IT,14.80,14.97,3.51,0.17,2026-01-05,2029-09-28,2029-10-26,28,23.2,Green
+2026-11-23,P06,Network and infrastructure fit-out,Digital and IT,6.30,6.30,0.00,0.00,2027-04-05,2030-03-29,2030-03-29,0,0.0,Not started
+2026-11-23,P07,Clinical service transition planning,Clinical Mobilisation,3.10,3.29,0.53,0.19,2026-02-02,2030-09-27,2030-10-04,7,17.2,Red
+2026-11-23,P08,Soft FM procurement,Estates and Facilities,1.20,1.20,0.45,0.00,2026-04-06,2027-10-29,2027-12-24,56,36.8,Amber
+2026-11-23,P09,Stakeholder engagement programme,Communications and Engagement,0.60,0.60,0.06,0.00,2025-10-06,2030-12-20,2031-01-03,14,21.6,Green

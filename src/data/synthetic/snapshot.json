@@ -1,10 +1,10 @@
 {
   "programme": "Halden Vale Health Campus Programme",
-  "as_of": "2026-11-16",
-  "iso_week": 47,
-  "weeks_running": 28,
-  "last_meeting": "2026-11-05",
-  "next_meeting": "2026-11-19",
+  "as_of": "2026-11-23",
+  "iso_week": 48,
+  "weeks_running": 29,
+  "last_meeting": "2026-11-19",
+  "next_meeting": "2026-12-03",
   "portfolio": {
     "projects": 9,
     "budget_gbp_m": 490.1,
@@ -20,21 +20,21 @@
   },
   "raid": {
     "open_by_type": {
-      "Risk": 45,
-      "Issue": 3,
-      "Assumption": 7,
-      "Dependency": 2
+      "Risk": 44,
+      "Issue": 4,
+      "Assumption": 8,
+      "Dependency": 3
     },
     "risk_bands": {
-      "High": 11,
-      "Medium": 19,
-      "Low": 15
+      "High": 9,
+      "Medium": 18,
+      "Low": 17
     },
     "reviews_overdue": 5,
-    "raised_this_week": 1,
-    "closed_this_week": 2,
-    "open_risks_delta": 1,
-    "high_exposure_delta": 0,
+    "raised_this_week": 5,
+    "closed_this_week": 3,
+    "open_risks_delta": -1,
+    "high_exposure_delta": -2,
     "top_risks": [
       {
         "id": "R-051",
@@ -53,11 +53,19 @@
         "owner_role": "Digital Lead"
       },
       {
+        "id": "R-063",
+        "workstream": "Finance and Commercial",
+        "title": "Contingency drawdown ahead of plan (package 4)",
+        "score": 25,
+        "trend": "Up",
+        "owner_role": "Commercial Lead"
+      },
+      {
         "id": "R-011",
         "workstream": "Finance and Commercial",
         "title": "Funding drawdown profile misaligned with spend",
         "score": 20,
-        "trend": "Down",
+        "trend": "Flat",
         "owner_role": "Commercial Lead"
       },
       {
@@ -67,23 +75,15 @@
         "score": 20,
         "trend": "Flat",
         "owner_role": "Clinical Transition Lead"
-      },
-      {
-        "id": "R-061",
-        "workstream": "Main Build",
-        "title": "Design freeze slips due to late clinical change requests (fit-out)",
-        "score": 20,
-        "trend": "Flat",
-        "owner_role": "Construction Project Manager"
       }
     ]
   },
   "actions": {
     "open": 18,
-    "on_hold": 0,
-    "overdue": 7,
+    "on_hold": 1,
+    "overdue": 8,
     "overdue_delta": 1,
-    "closed_total": 44,
+    "closed_total": 46,
     "due_before_next_meeting": 1,
     "attention": [
       {
@@ -97,26 +97,6 @@
         "latest": "05.11.2026 - ESL - Restarted following board decision."
       },
       {
-        "id": "A028",
-        "workstream": "Clinical Mobilisation",
-        "description": "Confirm workforce model for new outpatient service",
-        "owner_role": "Clinical Transition Lead",
-        "due": "2026-11-05",
-        "status": "In progress",
-        "flag": "Overdue",
-        "latest": "05.11.2026 - CTL - Paper submitted to programme board for approval."
-      },
-      {
-        "id": "A041",
-        "workstream": "Digital and IT",
-        "description": "Share interface specification with EPR supplier",
-        "owner_role": "Digital Lead",
-        "due": "2026-11-05",
-        "status": "In progress",
-        "flag": "Overdue",
-        "latest": "05.11.2026 - DGL - Revised programme received and under review."
-      },
-      {
         "id": "A051",
         "workstream": "Communications and Engagement",
         "description": "Prepare briefing note for local councillors",
@@ -124,37 +104,51 @@
         "due": "2026-11-05",
         "status": "In progress",
         "flag": "Overdue",
-        "latest": "22.10.2026 - CEL - Draft circulated for comment, responses due end of week."
+        "latest": "19.11.2026 - CEL - Revised programme received and under review."
       },
       {
-        "id": "A052",
-        "workstream": "Communications and Engagement",
-        "description": "Draft site hoarding messages for review",
-        "owner_role": "Communications Lead",
-        "due": "2026-11-05",
+        "id": "A061",
+        "workstream": "Enabling Works",
+        "description": "Confirm survey scope and issue instruction to consultant",
+        "owner_role": "Construction Project Manager",
+        "due": "2026-11-12",
         "status": "In progress",
         "flag": "Overdue",
-        "latest": "22.10.2026 - CEL - Survey booked, results to come back to the next meeting."
+        "latest": "19.11.2026 - CPM - Workshop held, comments being consolidated."
       },
       {
-        "id": "A057",
-        "workstream": "Finance and Commercial",
-        "description": "Confirm drawdown profile with finance",
-        "owner_role": "Finance Lead",
-        "due": "2026-11-05",
+        "id": "A038",
+        "workstream": "Enabling Works",
+        "description": "Agree access arrangements with site neighbours",
+        "owner_role": "Enabling Works Lead",
+        "due": "2026-11-19",
         "status": "In progress",
         "flag": "Overdue",
-        "latest": "05.11.2026 - FNL - Workshop held, comments being consolidated."
+        "latest": "19.11.2026 - EWL - Awaiting supplier response, chased by email."
+      },
+      {
+        "id": "A043",
+        "workstream": "Estates and Facilities",
+        "description": "Agree planned maintenance schedule for handover",
+        "owner_role": "Estates Lead",
+        "due": "2026-11-19",
+        "status": "In progress",
+        "flag": "Overdue",
+        "latest": "19.11.2026 - ESL - Application submitted, decision expected next month."
+      },
+      {
+        "id": "A048",
+        "workstream": "Main Build",
+        "description": "Agree waste management route with contractor",
+        "owner_role": "Programme Director",
+        "due": "2026-11-19",
+        "status": "In progress",
+        "flag": "Overdue",
+        "latest": "19.11.2026 - PD - Scope confirmed, pricing expected within two weeks."
       }
     ]
   },
   "history": [
-    {
-      "as_of": "2026-08-31",
-      "open_risks": 38,
-      "high_exposure_risks": 7,
-      "overdue_actions": 4
-    },
     {
       "as_of": "2026-09-07",
       "open_risks": 40,
@@ -220,6 +214,12 @@
       "open_risks": 45,
       "high_exposure_risks": 11,
       "overdue_actions": 7
+    },
+    {
+      "as_of": "2026-11-23",
+      "open_risks": 44,
+      "high_exposure_risks": 9,
+      "overdue_actions": 8
     }
   ],
   "files": [
